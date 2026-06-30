@@ -1,0 +1,80 @@
+import SwiftUI
+
+struct ModelPickerView: View {
+    @EnvironmentObject private var appState: AppState
+    @State private var customModelName = ""
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Picker("Active model", selection: modelSelection) {
+                ForEach(appState.modelManager.availableModels) { model in
+                    Text(model.displayName).tag(model.name)
+                }
+            }
+
+            Text(appState.modelManager.hardwareSummary)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            HStack(spacing: 8) {
+                TextField("Custom Ollama model, e.g. llama3.1:8b", text: $customModelName)
+                    .textFieldStyle(.roundedBorder)
+
+                Button("Use") {
+                    appState.modelManager.addCustomModel(named: customModelName)
+                    customModelName = ""
+                }
+                .disabled(customModelName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            }
+
+            Divider()
+
+            ForEach(appState.modelManager.availableModels) { model in
+                HStack(spacing: 12) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(model.displayName)
+                            .font(.system(size: 13, weight: .medium))
+                        Text(model.detail)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Spacer()
+
+                    if appState.modelManager.installedModelNames.contains(model.name) {
+                        Label("Installed", systemImage: "checkmark.circle")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.green)
+                    } else if model.isDownloadable {
+                        Button {
+                            Task {
+                                await appState.modelManager.download(model: model)
+                            }
+                        } label: {
+                            Label("Download", systemImage: "arrow.down.circle")
+                        }
+                        .disabled(appState.modelManager.downloadingModelName != nil)
+                    } else {
+                        Text("Custom")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .padding(.vertical, 2)
+            }
+
+            if let statusMessage = appState.modelManager.statusMessage {
+                Text(statusMessage)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    private var modelSelection: Binding<String> {
+        Binding(
+            get: { appState.modelManager.selectedModelName },
+            set: { appState.modelManager.selectModel(named: $0) }
+        )
+    }
+}
