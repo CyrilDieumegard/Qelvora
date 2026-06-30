@@ -14,6 +14,38 @@ DMG_PATH="$DIST_DIR/Qelvora-$VERSION.dmg"
 DEVELOPMENT_TEAM="${DEVELOPMENT_TEAM:-923MBLC4X4}"
 CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY:-Developer ID Application: Cyril Dieumegard (923MBLC4X4)}"
 
+sign_bundle() {
+  local path="$1"
+
+  if [[ -e "$path" ]]; then
+    codesign \
+      --force \
+      --sign "$CODE_SIGN_IDENTITY" \
+      --options runtime \
+      --timestamp \
+      --preserve-metadata=identifier,entitlements \
+      "$path"
+  fi
+}
+
+sign_embedded_sparkle() {
+  local app_path="$1"
+  local sparkle_path="$app_path/Contents/Frameworks/Sparkle.framework"
+  local sparkle_version_path="$sparkle_path/Versions/B"
+
+  if [[ ! -d "$sparkle_version_path" ]]; then
+    return 0
+  fi
+
+  echo "Signing embedded Sparkle components..."
+  sign_bundle "$sparkle_version_path/Autoupdate"
+  sign_bundle "$sparkle_version_path/Updater.app"
+  sign_bundle "$sparkle_version_path/XPCServices/Downloader.xpc"
+  sign_bundle "$sparkle_version_path/XPCServices/Installer.xpc"
+  sign_bundle "$sparkle_path"
+  sign_bundle "$app_path"
+}
+
 echo "Building Qelvora $VERSION..."
 echo "Signing identity: $CODE_SIGN_IDENTITY"
 
@@ -43,6 +75,7 @@ mkdir -p "$STAGING_DIR" "$DIST_DIR"
 cp -R "$APP_PATH" "$STAGING_DIR/Qelvora.app"
 ln -s /Applications "$STAGING_DIR/Applications"
 
+sign_embedded_sparkle "$STAGING_DIR/Qelvora.app"
 codesign --verify --deep --strict "$STAGING_DIR/Qelvora.app"
 
 echo "Creating $DMG_PATH..."
