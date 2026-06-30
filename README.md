@@ -1,108 +1,163 @@
-# Qelvora
+<p align="center">
+  <img src="Qelvora/Resources/Assets.xcassets/QelvoraLogo.imageset/QelvoraLogo.png" width="96" alt="Qelvora logo">
+</p>
 
-Qelvora is a native macOS menu bar app that corrects the spelling and grammar of selected text in any app. The proof of concept uses a local Ollama model, so selected text stays on the user's Mac.
+<h1 align="center">Qelvora</h1>
 
-The source code is fully open source. Ready-to-use signed and notarized DMG builds, support, and updates are distributed separately as the official paid convenience build.
+<p align="center">
+  Local-first writing correction and translation for macOS.
+  <br>
+  Select text anywhere, correct it locally, keep control of your words.
+</p>
 
-## Distribution Model
+<p align="center">
+  <a href="LICENSE"><img alt="License MIT" src="https://img.shields.io/badge/license-MIT-0ea5e9"></a>
+  <img alt="Platform macOS" src="https://img.shields.io/badge/platform-macOS-111827">
+  <img alt="Local first" src="https://img.shields.io/badge/privacy-local--first-22c55e">
+  <img alt="Ollama" src="https://img.shields.io/badge/models-Ollama-f97316">
+</p>
 
-- Source code: free and public on GitHub.
-- Official DMG: paid convenience build for users who want a signed, notarized, ready-to-install app.
-- Releases are built from this repository so the public code remains the source of truth.
-- Local-first design: selected text is processed through the user's local Ollama instance.
+<p align="center">
+  <img src="docs/assets/qelvora-hero.svg" alt="Qelvora correction panel preview">
+</p>
 
-The project is released under the MIT License.
+## What It Does
+
+Qelvora is a native macOS menu bar app that corrects spelling, grammar, and tone from selected text in other apps. It uses a local Ollama model, so the selected text stays on the user's Mac.
+
+It is designed for writers, founders, builders, students, and anyone who wants a fast correction layer across browsers, chat apps, notes, and editors without sending drafts to a remote service.
+
+## Why Qelvora
+
+- **Local by design**: text is processed through the user's local Ollama instance.
+- **Works across apps**: uses Accessibility, clipboard, and OCR fallbacks for difficult apps.
+- **Correction and translation**: supports correction modes plus language switching from the result panel.
+- **Flexible models**: recommended models are included, installed Ollama models are detected, and custom `model:tag` names are supported.
+- **Open source**: the public repository is the source of truth.
+
+## Product Model
+
+The code is open source and free to build.
+
+The official DMG is the paid convenience build: signed, notarized, packaged, tested, and easier to install for non-technical users.
+
+| Distribution | Audience | What it includes |
+| --- | --- | --- |
+| Source code | Developers | Full Swift/Xcode project under MIT |
+| Official DMG | Users | Signed app, clean installer, support, updates |
+
+## Preview
+
+<p align="center">
+  <img src="docs/assets/qelvora-flow.svg" alt="Qelvora workflow diagram">
+</p>
 
 ## Requirements
 
 - macOS 14 Sonoma or newer
-- Xcode 15 or newer
+- Xcode 15 or newer for source builds
 - Ollama installed locally
 - At least one Ollama model pulled locally
 - Accessibility permission enabled for Qelvora
 - Screen Recording permission enabled for OCR fallback in apps that do not expose selected text
 
-The app is intentionally not sandboxed. It needs Accessibility access to simulate `Cmd+C` and `Cmd+V` across other applications.
+Qelvora is intentionally not sandboxed. It needs Accessibility access to read and replace selected text across other applications.
 
-## Local Setup
+## Quick Start
 
-1. Install Ollama from <https://ollama.com>.
-2. Pull a small model for the first test:
+Install Ollama:
 
-   ```sh
-   ollama pull qwen2.5:3b
-   ```
+```sh
+brew install ollama
+```
 
-   Qelvora also detects installed Ollama models automatically. Recommended models are shown first, but any installed or custom Ollama model name can be selected in Settings.
+Pull a small model:
 
-3. Build a local DMG:
+```sh
+ollama pull qwen2.5:3b
+```
 
-   ```sh
-   ./scripts/build-dmg.sh
-   ```
+Build a local DMG:
 
-4. Open `dist/Qelvora-0.1.0.dmg`.
-5. Drag Qelvora to Applications.
-6. Launch Qelvora from Applications.
-7. Grant Accessibility permission when macOS asks, or open:
+```sh
+./scripts/build-dmg.sh
+```
 
-   ```text
-   System Settings > Privacy & Security > Accessibility
-   ```
+Open the generated DMG from `dist/`, drag Qelvora to Applications, then grant the macOS permissions requested by the app.
 
-For development, you can also open `Qelvora.xcodeproj` in Xcode and run the `Qelvora` scheme, but the DMG path is the expected manual test flow.
+## Models
 
-## How To Test The POC
+Qelvora ships with a small recommended model catalog, but it is not locked to that list.
 
-Start with TextEdit:
+- Recommended models are shown first.
+- Installed Ollama models are detected through `/api/tags`.
+- Custom model names such as `llama3.1:8b` or `my-model:latest` can be selected manually.
 
-1. Open TextEdit and type a sentence with spelling or grammar mistakes.
-2. Select the text.
-3. Press the global hotkey, by default `Cmd+Shift+C`.
-4. Qelvora copies the selection, sends it to Ollama on `localhost:11434`, pastes the corrected text, then restores the previous clipboard contents.
-
-Then test an Electron app such as Discord or Slack:
-
-1. Type text in a message field.
-2. Select the text.
-3. Press the hotkey.
-4. The selected text should be replaced in place.
+This keeps the app useful as local models improve.
 
 ## Architecture
 
 ```text
 Qelvora/
 ├─ App/                  App lifecycle and shared state
-├─ UI/                   Menu bar UI and settings
-├─ TextCapture/          Cmd+C / clipboard / Cmd+V workflow
-├─ CorrectionEngine/     Abstract correction engine and Ollama implementation
-├─ Models/               Recommended model catalog, custom models, Ollama registry
+├─ UI/                   Menu bar UI, settings, result panel
+├─ TextCapture/          Clipboard, Accessibility, OCR capture
+├─ CorrectionEngine/     Correction and translation engine abstraction
+├─ Models/               Recommended models, custom models, Ollama registry
 ├─ Hotkeys/              Global configurable hotkey
 ├─ Workflow/             End-to-end correction coordinator
-└─ Resources/            Info.plist and app resources
+└─ Resources/            Info.plist and app assets
 ```
 
 The correction backend sits behind this protocol:
 
 ```swift
 protocol CorrectionEngine {
-    func correct(text: String, model: String) async throws -> String
+    func correct(text: String, model: String, mode: CorrectionMode) async throws -> String
+    func translate(text: String, model: String, targetLanguage: TranslationLanguage) async throws -> String
 }
 ```
 
-The current implementation is `OllamaEngine`. A future embedded `llama.cpp` implementation can conform to the same protocol.
+The current implementation is `OllamaEngine`.
 
-## POC Limits
+## Development
+
+Run tests:
+
+```sh
+xcodebuild test -project Qelvora.xcodeproj -scheme Qelvora -destination platform=macOS
+```
+
+Build the release DMG:
+
+```sh
+./scripts/build-dmg.sh
+```
+
+Distribution artifacts are ignored by Git:
+
+```text
+dist/
+*.dmg
+*.app
+```
+
+## Current Limits
 
 - Ollama must already be installed and running.
 - Recommended model downloads are delegated to the local Ollama API.
 - Custom models must be available in Ollama before they can produce corrections.
-- The app relies on simulated copy/paste, which is broad and pragmatic but depends on the focused app accepting normal keyboard shortcuts.
+- Some apps require OCR fallback because they do not expose selected text cleanly.
 - Very large selections may take longer depending on the selected local model.
 
-## Next Steps
+## Roadmap
 
-- Publish the public GitHub repository.
-- Add richer model health checks and onboarding.
-- Automate signed and notarized DMG packaging from GitHub releases.
-- Add more compatibility tests for Electron apps, browsers, editors, and office suites.
+- Signed and notarized public DMG release.
+- Better onboarding for Ollama and macOS permissions.
+- Model health checks before correction.
+- More compatibility tests for browsers, Discord, Slack, editors, and office apps.
+- Optional updater and changelog page for the official build.
+
+## License
+
+Qelvora is released under the [MIT License](LICENSE).
