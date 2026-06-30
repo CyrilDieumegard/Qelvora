@@ -121,6 +121,10 @@ final class AppState: ObservableObject {
         NSApp.activate(ignoringOtherApps: true)
     }
 
+    func checkForUpdates() {
+        NotificationCenter.default.post(name: .qelvoraCheckForUpdates, object: nil)
+    }
+
     private func observeIncomingServiceURLs() {
         NotificationCenter.default.publisher(for: .qelvoraOpenURL)
             .compactMap { $0.object as? URL }
@@ -194,6 +198,7 @@ final class AppState: ObservableObject {
 
 extension Notification.Name {
     static let qelvoraOpenURL = Notification.Name("io.qelvora.open-url")
+    static let qelvoraCheckForUpdates = Notification.Name("io.qelvora.check-for-updates")
 }
 
 @MainActor

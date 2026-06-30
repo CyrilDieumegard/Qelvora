@@ -44,6 +44,7 @@
 		A00000000000000000000421 /* CorrectionAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000320 /* CorrectionAnalysis.swift */; };
 		A00000000000000000000424 /* CorrectionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000323 /* CorrectionHistory.swift */; };
 		A00000000000000000000420 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000332 /* Assets.xcassets */; };
+		A00000000000000000000A01 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = A00000000000000000000A02 /* Sparkle */; };
 		A00000000000000000000451 /* PasteboardSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000351 /* PasteboardSnapshotTests.swift */; };
 		A00000000000000000000452 /* ModelManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000352 /* ModelManagerTests.swift */; };
 		A00000000000000000000453 /* OllamaEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000353 /* OllamaEngineTests.swift */; };
@@ -114,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A00000000000000000000A01 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +284,9 @@
 			dependencies = (
 			);
 			name = Qelvora;
+			packageProductDependencies = (
+				A00000000000000000000A02 /* Sparkle */,
+			);
 			productName = Qelvora;
 			productReference = A00000000000000000000101 /* Qelvora.app */;
 			productType = "com.apple.product-type.application";
@@ -332,6 +337,9 @@
 				Base,
 			);
 			mainGroup = A00000000000000000000201;
+			packageReferences = (
+				A00000000000000000000A03 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			productRefGroup = A00000000000000000000202 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -665,6 +673,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A00000000000000000000A03 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A00000000000000000000A02 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A00000000000000000000A03 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A00000000000000000000003 /* Project object */;
 }

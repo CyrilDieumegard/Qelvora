@@ -132,6 +132,12 @@ struct MenuBarView: View {
     private var footer: some View {
         HStack(spacing: 8) {
             Button {
+                appState.checkForUpdates()
+            } label: {
+                Label("Updates", systemImage: "arrow.triangle.2.circlepath")
+            }
+
+            Button {
                 appState.showSettingsWindow()
             } label: {
                 Label("Settings", systemImage: "gearshape")

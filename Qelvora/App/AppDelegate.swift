@@ -1,13 +1,20 @@
 import AppKit
 import CoreServices
+import Sparkle
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private let serviceProvider = QelvoraServiceProvider()
+    private let updaterController = SPUStandardUpdaterController(
+        startingUpdater: true,
+        updaterDelegate: nil,
+        userDriverDelegate: nil
+    )
     private var didRegisterServicesProvider = false
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
         registerURLHandler()
+        registerUpdateHandler()
         prepareServicesRegistration()
         _ = UserServicesInstaller.installOrRefresh()
     }
@@ -31,6 +38,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         NotificationCenter.default.post(name: .qelvoraOpenURL, object: url)
+    }
+
+    private func registerUpdateHandler() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(checkForUpdates(_:)),
+            name: .qelvoraCheckForUpdates,
+            object: nil
+        )
+    }
+
+    @objc private func checkForUpdates(_ sender: Any?) {
+        updaterController.checkForUpdates(sender)
     }
 
     private func prepareServicesRegistration() {

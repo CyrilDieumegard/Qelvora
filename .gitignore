@@ -15,6 +15,7 @@ xcuserdata/
 .DS_Store
 
 # App distribution artifacts
+dist/
 *.app
 *.dmg
 *.pkg
@@ -24,4 +25,3 @@ xcuserdata/
 *.log
 .env
 .env.*
-

@@ -134,6 +134,22 @@ Build the release DMG:
 ./scripts/build-dmg.sh
 ```
 
+Generate the Sparkle appcast for in-app updates:
+
+```sh
+./scripts/generate-appcast.sh
+```
+
+By default, Qelvora checks `https://qelvora.app/appcast.xml`. Upload the generated `dist/appcast.xml` to that URL, and upload the matching DMG to GitHub Releases. The default appcast download prefix points to:
+
+```text
+https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/
+```
+
+Set `MAXIMUM_VERSIONS=3 ./scripts/generate-appcast.sh` if you want the feed to keep older signed builds. The default keeps only the newest build so pre-Sparkle DMGs do not appear as unsigned update entries.
+
+The Sparkle private signing key is stored in the macOS Keychain under the `qelvora` account. Do not export or commit it.
+
 Distribution artifacts are ignored by Git:
 
 ```text
@@ -153,6 +169,7 @@ dist/
 ## Roadmap
 
 - Signed and notarized public DMG release.
+- Public Sparkle appcast hosted at `qelvora.app/appcast.xml`.
 - Better onboarding for Ollama and macOS permissions.
 - Model health checks before correction.
 - More compatibility tests for browsers, Discord, Slack, editors, and office apps.
