@@ -69,7 +69,7 @@ The official DMG is the paid convenience build: signed, notarized, packaged, tes
 
 ## Current Release
 
-- Latest public build: `0.1.25`
+- Latest public build: `0.1.26`
 - Update feed: `https://qelvora.app/appcast.xml`
 - DMG delivery: [GitHub Releases](https://github.com/CyrilDieumegard/Qelvora/releases/latest)
 - Distribution status: signed, notarized, stapled, and delivered through Sparkle.
@@ -84,8 +84,8 @@ The official DMG is the paid convenience build: signed, notarized, packaged, tes
 
 - macOS 14 Sonoma or newer
 - Xcode 15 or newer for source builds
-- Ollama installed locally
-- At least one Ollama model pulled locally
+- Ollama installed and running locally
+- At least one Ollama model pulled locally, preferably `gemma4:e4b`
 - Accessibility permission enabled for Qelvora
 - Screen Recording permission enabled for OCR fallback in apps that do not expose selected text
 
@@ -99,10 +99,16 @@ Install Ollama:
 brew install ollama
 ```
 
-Pull a small model:
+Or use the official macOS installer:
+
+```text
+https://ollama.com/download/mac
+```
+
+Launch Ollama once, then pull the recommended default model:
 
 ```sh
-ollama pull qwen2.5:3b
+ollama pull gemma4:e4b
 ```
 
 Build a local DMG:

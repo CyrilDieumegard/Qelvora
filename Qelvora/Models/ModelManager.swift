@@ -10,10 +10,12 @@ final class ModelManager: ObservableObject {
     @Published private(set) var downloadingModelName: String?
     @Published private(set) var statusMessage: String?
     @Published private(set) var selectedModelName: String
+    @Published private(set) var isOllamaAvailable = false
 
     private let registry: OllamaModelRegistry
     private let userDefaults: UserDefaults
     private let selectedModelKey = "selectedModelName"
+    nonisolated static let ollamaDownloadURL = URL(string: "https://ollama.com/download/mac")!
 
     var hardwareSummary: String {
         hardwareProfile.summary
@@ -25,6 +27,10 @@ final class ModelManager: ObservableObject {
 
     var missingModels: [LocalModel] {
         availableModels.filter { $0.isDownloadable && !installedModelNames.contains($0.name) }
+    }
+
+    var selectedModelIsInstalled: Bool {
+        installedModelNames.contains(selectedModelName)
     }
 
     init(
@@ -85,6 +91,7 @@ final class ModelManager: ObservableObject {
 
         do {
             installedOllamaModelNames = try await registry.installedModels()
+            isOllamaAvailable = true
             installedModelNames = Set(installedOllamaModelNames)
             availableModels = Self.mergedModels(
                 recommendedModels: Self.models(for: hardwareProfile),
@@ -96,11 +103,23 @@ final class ModelManager: ObservableObject {
                 ? "No Ollama model is installed."
                 : "\(installedModelNames.count) Ollama model(s) detected."
         } catch {
-            statusMessage = error.localizedDescription
+            isOllamaAvailable = false
+            installedOllamaModelNames = []
+            installedModelNames = []
+            statusMessage = "Ollama is not installed or not running. Install Ollama, launch it, then refresh."
         }
     }
 
     func download(model: LocalModel) async {
+        if !isOllamaAvailable {
+            await refreshInstalledModels()
+        }
+
+        guard isOllamaAvailable else {
+            statusMessage = "Install and launch Ollama before downloading \(model.displayName)."
+            return
+        }
+
         downloadingModelName = model.name
         statusMessage = "Downloading \(model.displayName)..."
         defer { downloadingModelName = nil }
@@ -205,11 +224,17 @@ final class ModelManager: ObservableObject {
     }
 
     nonisolated static func preferredModelName(for hardwareProfile: HardwareProfile) -> String? {
-        hardwareProfile.recommendedTier == .compact ? "qwen2.5:3b" : "gemma4:e4b"
+        "gemma4:e4b"
     }
 
     nonisolated static func models(for hardwareProfile: HardwareProfile) -> [LocalModel] {
         let compact = [
+            LocalModel(
+                name: "gemma4:e4b",
+                displayName: "Gemma 4 4B",
+                tier: .compact,
+                detail: "Recommended default model for fast, disciplined correction."
+            ),
             LocalModel(
                 name: "qwen2.5:3b",
                 displayName: "Qwen 2.5 3B",
@@ -230,12 +255,6 @@ final class ModelManager: ObservableObject {
                 displayName: "Qwen 2.5 7B",
                 tier: .standard,
                 detail: "Good balance between quality and speed."
-            ),
-            LocalModel(
-                name: "gemma4:e4b",
-                displayName: "Gemma 4 4B",
-                tier: .standard,
-                detail: "Recommended default model for more disciplined correction."
             ),
             LocalModel(
                 name: "mistral:7b",

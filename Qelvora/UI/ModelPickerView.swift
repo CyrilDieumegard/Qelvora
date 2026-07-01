@@ -6,6 +6,10 @@ struct ModelPickerView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            if !appState.modelManager.isOllamaAvailable {
+                ollamaSetupNotice
+            }
+
             Picker("Active model", selection: modelSelection) {
                 ForEach(appState.modelManager.availableModels) { model in
                     Text(model.displayName).tag(model.name)
@@ -69,6 +73,45 @@ struct ModelPickerView: View {
                     .foregroundStyle(.secondary)
             }
         }
+    }
+
+    private var ollamaSetupNotice: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("Ollama is required", systemImage: "exclamationmark.triangle.fill")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(.orange)
+
+            Text("Install Ollama, launch it once, then refresh Qelvora. Model downloads use the local Ollama API on localhost:11434.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            HStack(spacing: 8) {
+                Button {
+                    appState.openOllamaDownloadPage()
+                } label: {
+                    Label("Download Ollama", systemImage: "arrow.down.circle")
+                }
+                .buttonStyle(.borderedProminent)
+
+                Button {
+                    appState.openOllamaOrDownloadPage()
+                } label: {
+                    Label("Open Ollama", systemImage: "play.circle")
+                }
+
+                Button {
+                    Task {
+                        await appState.modelManager.refreshInstalledModels()
+                    }
+                } label: {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+                .disabled(appState.modelManager.isRefreshing)
+            }
+            .controlSize(.small)
+        }
+        .padding(12)
+        .background(Color.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
     }
 
     private var modelSelection: Binding<String> {

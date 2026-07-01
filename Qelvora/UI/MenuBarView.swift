@@ -8,6 +8,9 @@ struct MenuBarView: View {
         VStack(alignment: .leading, spacing: 14) {
             header
             actions
+            if !appState.modelManager.isOllamaAvailable {
+                ollamaSetupPanel
+            }
             statusPanel
             modelPanel
             footer
@@ -123,10 +126,52 @@ struct MenuBarView: View {
                 Spacer()
             }
             .font(.caption)
+
+            if let statusMessage = appState.modelManager.statusMessage {
+                Text(statusMessage)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
         }
         .padding(12)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(nsColor: .controlBackgroundColor), in: RoundedRectangle(cornerRadius: 10))
+    }
+
+    private var ollamaSetupPanel: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("Ollama required", systemImage: "exclamationmark.triangle.fill")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(.orange)
+
+            Text("Install and launch Ollama before downloading models or correcting text.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+
+            HStack(spacing: 8) {
+                Button {
+                    appState.openOllamaDownloadPage()
+                } label: {
+                    Label("Download Ollama", systemImage: "arrow.down.circle")
+                }
+                .buttonStyle(.borderedProminent)
+
+                Button {
+                    Task {
+                        await appState.modelManager.refreshInstalledModels()
+                    }
+                } label: {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+                .disabled(appState.modelManager.isRefreshing)
+            }
+            .controlSize(.small)
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
     }
 
     private var footer: some View {

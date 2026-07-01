@@ -16,6 +16,7 @@ final class AppState: ObservableObject {
     private var settingsWindow: NSWindow?
     private var cancellables: Set<AnyCancellable> = []
     private var permissionTimer: Timer?
+    private var didShowOllamaSetupAlert = false
 
     var menuBarSystemImage: String {
         if coordinator.isProcessing {
@@ -63,6 +64,7 @@ final class AppState: ObservableObject {
 
         Task {
             await modelManager.refreshInstalledModels()
+            showOllamaSetupAlertIfNeeded()
         }
     }
 
@@ -125,6 +127,24 @@ final class AppState: ObservableObject {
         NotificationCenter.default.post(name: .qelvoraCheckForUpdates, object: nil)
     }
 
+    func openOllamaDownloadPage() {
+        NSWorkspace.shared.open(ModelManager.ollamaDownloadURL)
+    }
+
+    func openOllamaOrDownloadPage() {
+        guard let url = Self.ollamaApplicationURL else {
+            openOllamaDownloadPage()
+            return
+        }
+
+        let configuration = NSWorkspace.OpenConfiguration()
+        NSWorkspace.shared.openApplication(at: url, configuration: configuration) { _, error in
+            if error != nil {
+                NSWorkspace.shared.open(ModelManager.ollamaDownloadURL)
+            }
+        }
+    }
+
     private func observeIncomingServiceURLs() {
         NotificationCenter.default.publisher(for: .qelvoraOpenURL)
             .compactMap { $0.object as? URL }
@@ -134,6 +154,41 @@ final class AppState: ObservableObject {
                 }
             }
             .store(in: &cancellables)
+    }
+
+    private func showOllamaSetupAlertIfNeeded() {
+        guard !didShowOllamaSetupAlert,
+              !modelManager.isOllamaAvailable else {
+            return
+        }
+
+        didShowOllamaSetupAlert = true
+
+        let alert = NSAlert()
+        alert.messageText = "Ollama is required"
+        alert.informativeText = """
+        Qelvora corrects text with local Ollama models. Install Ollama, launch it once, then download the recommended Gemma 4 4B model from Qelvora.
+        """
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "Download Ollama")
+        alert.addButton(withTitle: "Later")
+
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            openOllamaDownloadPage()
+        }
+    }
+
+    private static var ollamaApplicationURL: URL? {
+        let fileManager = FileManager.default
+        let candidates = [
+            URL(fileURLWithPath: "/Applications/Ollama.app"),
+            fileManager.homeDirectoryForCurrentUser
+                .appendingPathComponent("Applications")
+                .appendingPathComponent("Ollama.app")
+        ]
+
+        return candidates.first { fileManager.fileExists(atPath: $0.path) }
     }
 
     private func handleIncomingServiceURL(_ url: URL) async {

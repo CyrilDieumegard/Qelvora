@@ -10,6 +10,7 @@ enum CorrectionEngineError: LocalizedError, Equatable {
     case invalidResponse
     case implausibleCorrection
     case ollamaUnavailable
+    case ollamaModelMissing(String)
     case ollamaError(String)
 
     var errorDescription: String? {
@@ -21,7 +22,9 @@ enum CorrectionEngineError: LocalizedError, Equatable {
         case .implausibleCorrection:
             return "Correction ignored: the model response was inconsistent."
         case .ollamaUnavailable:
-            return "Ollama is not responding on localhost:11434."
+            return "Ollama is required. Install and launch Ollama, then try again."
+        case .ollamaModelMissing(let modelName):
+            return "\(modelName) is not installed in Ollama. Download the model from Qelvora settings first."
         case .ollamaError(let message):
             return message
         }

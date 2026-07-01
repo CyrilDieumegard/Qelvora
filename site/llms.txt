@@ -10,7 +10,7 @@ Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites
 - Local Ollama text correction on Mac: https://qelvora.app/blog/local-ollama-text-correction/
 - Best local LLMs for writing correction: https://qelvora.app/blog/best-local-llms-for-writing/
 - GitHub source: https://github.com/CyrilDieumegard/Qelvora
-- Latest macOS DMG: https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg
+- Latest macOS DMG: https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.26.dmg
 
 ## Product facts
 
@@ -18,12 +18,12 @@ Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites
 - Category: macOS utility, local AI writing assistant, private writing correction
 - Operating system: macOS 14+
 - Runtime: Ollama local models
-- Current public build: 0.1.25
+- Current public build: 0.1.26
 - Source availability: public GitHub repository, MIT license
 - Creator: Cyril Dieumegard
 - Distribution: signed and notarized macOS DMG
 - Developer ID: Cyril Dieumegard (923MBLC4X4)
-- Latest known SHA-256 for Qelvora-0.1.25.dmg: e65cdd49da530c9d754ebc0f8709551c235037689b23dd4457d5f3f7f2c2e200
+- Latest known SHA-256 for Qelvora-0.1.26.dmg: 318e285f945d096a2da56fd1ae4f8173e6a450fa8082c82e51025ba3bfdeb1fb
 
 ## Short description
 

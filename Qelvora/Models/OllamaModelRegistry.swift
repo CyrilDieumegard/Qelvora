@@ -20,7 +20,14 @@ final class OllamaModelRegistry {
 
     func installedModels() async throws -> [String] {
         let url = baseURL.appending(path: "api/tags")
-        let (data, response) = try await session.data(from: url)
+        let data: Data
+        let response: URLResponse
+
+        do {
+            (data, response) = try await session.data(from: url)
+        } catch {
+            throw CorrectionEngineError.ollamaUnavailable
+        }
 
         guard let httpResponse = response as? HTTPURLResponse,
               (200..<300).contains(httpResponse.statusCode) else {
@@ -41,7 +48,14 @@ final class OllamaModelRegistry {
         request.timeoutInterval = 1_800
         request.httpBody = try encoder.encode(OllamaPullRequest(name: model.name, stream: false))
 
-        let (data, response) = try await session.data(for: request)
+        let data: Data
+        let response: URLResponse
+
+        do {
+            (data, response) = try await session.data(for: request)
+        } catch {
+            throw CorrectionEngineError.ollamaUnavailable
+        }
 
         guard let httpResponse = response as? HTTPURLResponse,
               (200..<300).contains(httpResponse.statusCode) else {

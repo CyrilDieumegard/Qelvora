@@ -46,6 +46,7 @@ final class CorrectionCoordinator: ObservableObject {
             let capturedText = try await textCapture.captureSelectedText()
 
             status = .correcting
+            try validateLocalModelIsReady()
             CorrectionResultPanel.showLoading(sourceText: capturedText.text)
             let correctedText = try await correctionEngine.correct(
                 text: capturedText.text,
@@ -133,6 +134,7 @@ final class CorrectionCoordinator: ObservableObject {
 
         do {
             status = .correcting
+            try validateLocalModelIsReady()
             CorrectionResultPanel.showLoading(sourceText: sourceText)
 
             let correctedText = try await correctionEngine.correct(
@@ -201,6 +203,7 @@ final class CorrectionCoordinator: ObservableObject {
 
         do {
             status = .correcting
+            try validateLocalModelIsReady()
             let translatedText = try await correctionEngine.translate(
                 text: text,
                 model: modelManager.selectedModelName,
@@ -216,6 +219,16 @@ final class CorrectionCoordinator: ObservableObject {
             status = .failed(error.localizedDescription)
             FeedbackBanner.show(error.localizedDescription)
             NSSound.beep()
+        }
+    }
+
+    private func validateLocalModelIsReady() throws {
+        guard modelManager.isOllamaAvailable else {
+            throw CorrectionEngineError.ollamaUnavailable
+        }
+
+        guard modelManager.selectedModelIsInstalled else {
+            throw CorrectionEngineError.ollamaModelMissing(modelManager.selectedModelDisplayName)
         }
     }
 

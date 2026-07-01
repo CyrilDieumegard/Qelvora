@@ -6,17 +6,22 @@ final class ModelManagerTests: XCTestCase {
         let models = ModelManager.models(for: HardwareProfile(physicalMemoryGB: 8))
             .map(\.name)
 
-        XCTAssertEqual(models, ["qwen2.5:3b", "gemma2:2b"])
+        XCTAssertEqual(models, ["gemma4:e4b", "qwen2.5:3b", "gemma2:2b"])
     }
 
     func testStandardModelShortlistForSixteenToThirtyTwoGBMacs() {
         let models = ModelManager.models(for: HardwareProfile(physicalMemoryGB: 16))
             .map(\.name)
 
-        XCTAssertEqual(models, ["qwen2.5:3b", "gemma2:2b", "qwen2.5:7b", "gemma4:e4b", "mistral:7b"])
+        XCTAssertEqual(models, ["gemma4:e4b", "qwen2.5:3b", "gemma2:2b", "qwen2.5:7b", "mistral:7b"])
     }
 
-    func testGemma4IsPreferredForStandardMemoryMacs() {
+    func testGemma4IsPreferredForAllMacs() {
+        XCTAssertEqual(
+            ModelManager.preferredModelName(for: HardwareProfile(physicalMemoryGB: 8)),
+            "gemma4:e4b"
+        )
+
         XCTAssertEqual(
             ModelManager.preferredModelName(for: HardwareProfile(physicalMemoryGB: 16)),
             "gemma4:e4b"
