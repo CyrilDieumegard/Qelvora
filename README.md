@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/assets/qelvora-product-overview.svg" alt="Qelvora product overview">
+  <img src="docs/assets/qelvora-product-overview-v2.svg" alt="Qelvora product overview">
 </p>
 
 ## What It Does
