@@ -1,7 +1,9 @@
 import Foundation
+import NaturalLanguage
 
 struct CorrectionAnalysis: Equatable {
     let wordCount: Int
+    let detectedLanguage: DetectedLanguage?
     let correctnessPercentage: Int?
     let correctionCount: Int
     let highlightedSourceRuns: [CorrectionHighlightRun]
@@ -14,6 +16,7 @@ struct CorrectionAnalysis: Equatable {
     init(sourceText: String?, correctedText: String) {
         let correctedText = correctedText.trimmingCharacters(in: .whitespacesAndNewlines)
         self.wordCount = Self.wordCount(in: correctedText)
+        self.detectedLanguage = DetectedLanguage.detect(in: sourceText ?? correctedText)
 
         guard let rawSourceText = sourceText else {
             self.correctnessPercentage = nil
@@ -261,6 +264,90 @@ struct CorrectionReplacement: Equatable {
     let corrected: String
 }
 
+struct DetectedLanguage: Equatable {
+    let code: String
+    let name: String
+    let flag: String
+    let confidence: Double
+
+    var displayLabel: String {
+        "\(flag) \(name)"
+    }
+
+    static func detect(in text: String) -> DetectedLanguage? {
+        let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard trimmedText.unicodeScalars.count >= 3 else {
+            return nil
+        }
+
+        if trimmedText.containsJapaneseScript {
+            return DetectedLanguage(code: "JA", name: "Japanese", flag: "🇯🇵", confidence: 1)
+        }
+
+        if trimmedText.containsCJKScript {
+            return DetectedLanguage(code: "ZH", name: "Chinese", flag: "🇨🇳", confidence: 1)
+        }
+
+        let recognizer = NLLanguageRecognizer()
+        recognizer.processString(trimmedText)
+
+        guard
+            let language = recognizer.dominantLanguage,
+            language != .undetermined
+        else {
+            return nil
+        }
+
+        let confidence = recognizer.languageHypotheses(withMaximum: 1)[language] ?? 0
+        guard confidence >= 0.35 else {
+            return nil
+        }
+
+        let rawCode = language.rawValue
+        return DetectedLanguage(
+            code: Self.shortCode(for: rawCode),
+            name: Self.displayName(for: rawCode),
+            flag: Self.flag(for: rawCode),
+            confidence: confidence
+        )
+    }
+
+    private static func shortCode(for rawCode: String) -> String {
+        rawCode
+            .split(separator: "-")
+            .first
+            .map { String($0).uppercased() } ?? rawCode.uppercased()
+    }
+
+    private static func displayName(for rawCode: String) -> String {
+        let languageCode = String(rawCode.split(separator: "-").first ?? Substring(rawCode))
+        return Locale(identifier: "en").localizedString(forLanguageCode: languageCode) ?? rawCode
+    }
+
+    private static func flag(for rawCode: String) -> String {
+        switch shortCode(for: rawCode) {
+        case "EN":
+            return "🇬🇧"
+        case "FR":
+            return "🇫🇷"
+        case "ES":
+            return "🇪🇸"
+        case "DE":
+            return "🇩🇪"
+        case "IT":
+            return "🇮🇹"
+        case "PT":
+            return "🇵🇹"
+        case "JA":
+            return "🇯🇵"
+        case "ZH":
+            return "🇨🇳"
+        default:
+            return "🌐"
+        }
+    }
+}
+
 private struct WordToken: Equatable {
     let text: String
     let normalizedText: String
@@ -280,6 +367,18 @@ private extension String {
             .replacingOccurrences(of: "‐", with: "-")
             .replacingOccurrences(of: "‑", with: "-")
             .replacingOccurrences(of: "–", with: "-")
+    }
+
+    var containsJapaneseScript: Bool {
+        unicodeScalars.contains { scalar in
+            (0x3040...0x309F).contains(scalar.value) || (0x30A0...0x30FF).contains(scalar.value)
+        }
+    }
+
+    var containsCJKScript: Bool {
+        unicodeScalars.contains { scalar in
+            (0x4E00...0x9FFF).contains(scalar.value)
+        }
     }
 }
 

@@ -11,6 +11,26 @@ final class CorrectionAnalysisTests: XCTestCase {
         XCTAssertEqual(analysis.wordCount, 5)
     }
 
+    func testDetectsFrenchSourceLanguage() {
+        let analysis = CorrectionAnalysis(
+            sourceText: "Bonjour à tous, je prépare une petite mise à jour du logiciel.",
+            correctedText: "Bonjour à tous, je prépare une petite mise à jour du logiciel."
+        )
+
+        XCTAssertEqual(analysis.detectedLanguage?.code, "FR")
+        XCTAssertEqual(analysis.detectedLanguage?.name, "French")
+    }
+
+    func testDetectsJapaneseSourceLanguage() {
+        let analysis = CorrectionAnalysis(
+            sourceText: "こんにちは、今日はとても良い日です。",
+            correctedText: "こんにちは、今日はとても良い日です。"
+        )
+
+        XCTAssertEqual(analysis.detectedLanguage?.code, "JA")
+        XCTAssertEqual(analysis.detectedLanguage?.name, "Japanese")
+    }
+
     func testHighlightsChangedSourceWords() {
         let analysis = CorrectionAnalysis(
             sourceText: "on pourrait afficher les erreurs souligner",

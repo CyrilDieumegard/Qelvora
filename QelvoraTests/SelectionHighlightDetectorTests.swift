@@ -159,8 +159,8 @@ final class QelvoraServicesTests: XCTestCase {
     func testBundleVersionIsBumpedForServiceCacheRefresh() throws {
         let bundle = Bundle(for: QelvoraServiceProvider.self)
 
-        XCTAssertEqual(bundle.infoDictionary?["CFBundleShortVersionString"] as? String, "0.1.24")
-        XCTAssertEqual(bundle.infoDictionary?["CFBundleVersion"] as? String, "25")
+        XCTAssertEqual(bundle.infoDictionary?["CFBundleShortVersionString"] as? String, "0.1.25")
+        XCTAssertEqual(bundle.infoDictionary?["CFBundleVersion"] as? String, "26")
     }
 
     func testQelvoraURLSchemeIsDeclaredForUserServiceWorkflow() throws {

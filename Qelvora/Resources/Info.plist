@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.24</string>
+	<string>0.1.25</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>25</string>
+	<string>26</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>14.0</string>
 	<key>LSUIElement</key>
@@ -41,12 +41,6 @@
 	<string>Qelvora uses the keyboard shortcut to copy selected text and paste the correction.</string>
 	<key>NSScreenCaptureUsageDescription</key>
 	<string>Qelvora uses local screen capture to read selected text in apps that do not expose it, such as Discord.</string>
-	<key>SUEnableInstallerLauncherService</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>https://qelvora.app/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>zaU+NChxjdG/rSMF5NLQSiZ0stSm+MAKrDkkknKi2lI=</string>
 	<key>NSServices</key>
 	<array>
 		<dict>
@@ -66,10 +60,10 @@
 				<string>public.plain-text</string>
 				<string>public.text</string>
 			</array>
-			<key>NSTimeout</key>
-			<integer>120000</integer>
 			<key>NSServiceDescription</key>
 			<string>Shows a local correction for the selected text with Qelvora.</string>
+			<key>NSTimeout</key>
+			<integer>120000</integer>
 		</dict>
 		<dict>
 			<key>NSMenuItem</key>
@@ -81,13 +75,6 @@
 			<string>correctSelection</string>
 			<key>NSPortName</key>
 			<string>Qelvora</string>
-			<key>NSSendTypes</key>
-			<array>
-				<string>NSStringPboardType</string>
-				<string>public.utf8-plain-text</string>
-				<string>public.plain-text</string>
-				<string>public.text</string>
-			</array>
 			<key>NSReturnTypes</key>
 			<array>
 				<string>NSStringPboardType</string>
@@ -95,11 +82,24 @@
 				<string>public.plain-text</string>
 				<string>public.text</string>
 			</array>
-			<key>NSTimeout</key>
-			<integer>120000</integer>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+				<string>public.utf8-plain-text</string>
+				<string>public.plain-text</string>
+				<string>public.text</string>
+			</array>
 			<key>NSServiceDescription</key>
 			<string>Replaces the selected text with a local correction from Qelvora.</string>
+			<key>NSTimeout</key>
+			<integer>120000</integer>
 		</dict>
 	</array>
+	<key>SUEnableInstallerLauncherService</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://qelvora.app/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>zaU+NChxjdG/rSMF5NLQSiZ0stSm+MAKrDkkknKi2lI=</string>
 </dict>
 </plist>

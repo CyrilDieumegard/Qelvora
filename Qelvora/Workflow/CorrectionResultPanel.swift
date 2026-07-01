@@ -249,9 +249,15 @@ private struct CorrectionResultPanelView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                         if !sourceText.isEmpty {
-                            Text("\(CorrectionAnalysis.wordCount(in: sourceText)) words detected")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                            HStack(spacing: 8) {
+                                Text("\(CorrectionAnalysis.wordCount(in: sourceText)) words detected")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+
+                                if let detectedLanguage = DetectedLanguage.detect(in: sourceText) {
+                                    languageBadge(detectedLanguage)
+                                }
+                            }
                         }
                     }
                 }
@@ -322,6 +328,10 @@ private struct CorrectionResultPanelView: View {
                     systemImage: analysis.correctionCount > 0 ? "text.badge.checkmark" : "checkmark.circle",
                     tint: analysis.correctionCount > 0 ? .red : .green
                 )
+
+                if let detectedLanguage = analysis.detectedLanguage {
+                    languageBadge(detectedLanguage)
+                }
 
                 Spacer()
             }
@@ -442,6 +452,17 @@ private struct CorrectionResultPanelView: View {
             .padding(.vertical, 5)
             .foregroundStyle(tint)
             .background(tint.opacity(0.12), in: Capsule())
+    }
+
+    private func languageBadge(_ language: DetectedLanguage) -> some View {
+        Label(language.displayLabel, systemImage: "globe")
+            .font(.system(size: 11, weight: .semibold))
+            .labelStyle(.titleAndIcon)
+            .padding(.horizontal, 9)
+            .padding(.vertical, 5)
+            .foregroundStyle(.secondary)
+            .background(Color.secondary.opacity(0.10), in: Capsule())
+            .help("Detected source language: \(language.name)")
     }
 
     private func correctnessTint(for percentage: Int) -> Color {
