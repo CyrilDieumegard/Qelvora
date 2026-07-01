@@ -67,6 +67,13 @@ The official DMG is the paid convenience build: signed, notarized, packaged, tes
 | Source code | Developers | Full Swift/Xcode project under MIT |
 | Official DMG | Users | Signed app, clean installer, support, updates |
 
+## Current Release
+
+- Latest public build: `0.1.25`
+- Update feed: `https://qelvora.app/appcast.xml`
+- DMG delivery: [GitHub Releases](https://github.com/CyrilDieumegard/Qelvora/releases/latest)
+- Distribution status: signed, notarized, stapled, and delivered through Sparkle.
+
 ## Workflow Preview
 
 <p align="center">
@@ -189,12 +196,11 @@ dist/
 
 ## Roadmap
 
-- Signed and notarized public DMG release.
-- Public Sparkle appcast hosted at `qelvora.app/appcast.xml`.
-- Better onboarding for Ollama and macOS permissions.
-- Model health checks before correction.
+- Better onboarding for Ollama, model setup, and macOS permissions.
+- Model health checks before correction and translation.
 - More compatibility tests for browsers, Discord, Slack, editors, and office apps.
-- Optional updater and changelog page for the official build.
+- Public changelog page for official builds.
+- Clearer troubleshooting for macOS Services, Accessibility, Screen Recording, and Sparkle updates.
 
 ## License
 
