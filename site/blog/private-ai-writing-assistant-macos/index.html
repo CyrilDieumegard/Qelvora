@@ -22,6 +22,7 @@
         "@type": "Article",
         "headline": "Private AI writing assistant for macOS",
         "description": "A practical guide to private AI writing correction on macOS and how Qelvora keeps text cleanup local with Ollama models.",
+        "image": "https://qelvora.app/assets/qelvora-product-overview.svg",
         "datePublished": "2026-07-01",
         "dateModified": "2026-07-01",
         "author": {
@@ -34,17 +35,25 @@
           "name": "Qelvora",
           "logo": "https://qelvora.app/assets/qelvora-logo.png"
         },
+        "about": ["private AI writing assistant", "macOS writing correction", "local AI"],
+        "mentions": ["Qelvora", "Ollama", "Gemma", "Qwen", "DeepSeek", "Mistral", "Llama", "Phi"],
+        "isPartOf": {
+          "@type": "Blog",
+          "name": "Qelvora Blog",
+          "url": "https://qelvora.app/blog/"
+        },
         "mainEntityOfPage": "https://qelvora.app/blog/private-ai-writing-assistant-macos/"
       }
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" aria-label="Site navigation">
       <a class="brand" href="/" aria-label="Qelvora home"><img src="/assets/qelvora-logo.png" width="36" height="36" alt=""><span>Qelvora</span></a>
       <nav class="nav-links" aria-label="Primary"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/#download">Download</a></nav>
       <a class="nav-cta" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" rel="noopener noreferrer">Download</a>
     </header>
-    <main class="article-page">
+    <main id="main" class="article-page">
       <article class="article-body">
         <p class="kicker">Privacy guide</p>
         <h1>Private AI writing assistant for macOS</h1>
@@ -54,10 +63,34 @@
         <p>Qelvora focuses on the narrow daily workflow: select text in a Mac app, trigger the correction action, review the result, and copy the polished version back where you were already working.</p>
         <h2>Why local models matter</h2>
         <p>Local inference gives you more control over where text is processed. With Ollama installed, Qelvora can use model families such as Gemma, Qwen, DeepSeek, Kimi, Mistral, Llama, or Phi as local writing engines. The best model depends on your hardware, language, and preferred writing style.</p>
+        <p>This matters most when the text is not just marketing copy. A private assistant is useful when the draft contains names, support details, product decisions, financial context, legal wording, or internal project notes that should not be copied into another hosted workspace just to fix grammar or tone.</p>
         <h2>Who should use it?</h2>
         <p>Qelvora is useful for founders, developers, support teams, privacy-first operators, and independent builders who write inside many different macOS apps. It is especially relevant when the goal is fast correction, rewriting, or translation rather than long-form document generation.</p>
-        <h2>Direct answer</h2>
+        <ul>
+          <li>Founders can polish investor updates, launch copy, and customer replies while keeping drafts on the Mac.</li>
+          <li>Developers can rewrite GitHub issues, release notes, and support answers from their existing tools.</li>
+          <li>Privacy-first teams can use local model inference when a cloud correction service is not appropriate.</li>
+        </ul>
+        <h2>How it fits into a Mac workflow</h2>
+        <p>The point is not to replace your editor. Qelvora is designed as a correction layer around the apps you already use. Select the sentence or paragraph, trigger the action, check the proposed result, then return to the original task.</p>
+        <p>For the practical setup, read the <a href="/blog/local-ollama-text-correction/">local Ollama text correction guide</a>. For model choices, the <a href="/blog/best-local-llms-for-writing/">local LLM writing guide</a> explains which families are worth testing first.</p>
+        <h2>Quick takeaway</h2>
         <p>Qelvora is a private AI writing assistant for macOS that corrects, rewrites, and translates selected text with local Ollama models instead of a cloud writing service.</p>
+        <aside class="article-cta">
+          <div>
+            <strong>Try Qelvora on your Mac.</strong>
+            <p>Install the notarized DMG and connect it to the Ollama models you already use.</p>
+          </div>
+          <a class="button button-primary" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" rel="noopener noreferrer">Download Qelvora</a>
+        </aside>
+        <aside class="article-related">
+          <strong>Related guides</strong>
+          <nav aria-label="Related Qelvora guides">
+            <a href="/blog/local-ollama-text-correction/">Ollama workflow</a>
+            <a href="/blog/best-local-llms-for-writing/">Model guide</a>
+            <a href="/#privacy">Privacy section</a>
+          </nav>
+        </aside>
       </article>
     </main>
     <footer class="site-footer"><div class="footer-links"><a href="/blog/">All guides</a><a href="/llms.txt">LLMs.txt</a><a href="https://github.com/CyrilDieumegard/Qelvora" rel="noopener noreferrer">GitHub</a></div></footer>

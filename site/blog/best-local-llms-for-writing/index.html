@@ -22,33 +22,65 @@
         "@type": "Article",
         "headline": "Best local LLMs for writing correction",
         "description": "How to evaluate local LLM families for writing correction on macOS.",
+        "image": "https://qelvora.app/assets/qelvora-how-it-works.svg",
         "datePublished": "2026-07-01",
         "dateModified": "2026-07-01",
         "author": {"@type": "Person", "name": "Cyril Dieumegard", "url": "https://github.com/CyrilDieumegard"},
         "publisher": {"@type": "Organization", "name": "Qelvora", "logo": "https://qelvora.app/assets/qelvora-logo.png"},
+        "about": ["local LLMs", "writing correction", "Ollama models"],
+        "mentions": ["Gemma", "Qwen", "DeepSeek", "Kimi", "MiniMax", "ERNIE", "GLM", "Mistral", "Llama", "Phi"],
+        "isPartOf": {"@type": "Blog", "name": "Qelvora Blog", "url": "https://qelvora.app/blog/"},
         "mainEntityOfPage": "https://qelvora.app/blog/best-local-llms-for-writing/"
       }
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" aria-label="Site navigation">
       <a class="brand" href="/" aria-label="Qelvora home"><img src="/assets/qelvora-logo.png" width="36" height="36" alt=""><span>Qelvora</span></a>
       <nav class="nav-links" aria-label="Primary"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/#download">Download</a></nav>
       <a class="nav-cta" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" rel="noopener noreferrer">Download</a>
     </header>
-    <main class="article-page">
+    <main id="main" class="article-page">
       <article class="article-body">
         <p class="kicker">Model guide</p>
         <h1>Best local LLMs for writing correction</h1>
         <p class="article-lead">There is no single best local LLM for every writing task. For Qelvora, the right model is the one that gives clean corrections, good tone, acceptable latency, and reliable language support on your Mac.</p>
         <h2>Models to test first</h2>
         <p>Gemma is a strong non-Chinese option from Google DeepMind's open model family. Qwen, DeepSeek, Kimi, MiniMax, ERNIE, and GLM are popular Chinese model families worth testing for multilingual and reasoning-heavy workflows. Mistral, Llama, and Phi are also practical local options depending on your hardware and preferred Ollama tags.</p>
+        <ul>
+          <li>Gemma: useful to test when you want a capable open model family from Google DeepMind.</li>
+          <li>Qwen: often strong for multilingual rewriting, instruction following, and general correction tasks.</li>
+          <li>DeepSeek: worth testing when you want sharper reasoning and structured edits.</li>
+          <li>Kimi, MiniMax, ERNIE, GLM, Yi, and InternLM: useful Chinese model families to watch as Ollama-compatible local tags evolve.</li>
+          <li>Mistral, Llama, and Phi: practical options for fast drafts, compact setups, and general local writing experiments.</li>
+        </ul>
         <h2>What matters for writing correction</h2>
         <p>For correction and rewriting, evaluate tone preservation, grammar accuracy, hallucination resistance, speed, memory usage, and whether the model respects short instructions. A model that is excellent for coding may not be the best model for concise customer replies.</p>
+        <p>A good writing model should improve the sentence without changing the intention. It should keep names, numbers, product details, and constraints stable. This is more important than benchmark hype when your goal is a clean customer reply or a precise internal note.</p>
+        <h2>A simple test prompt</h2>
+        <p>Use the same real sample across several models. Pick one messy sentence, one sensitive paragraph with names removed, one customer reply, and one short translation. Compare how each model handles tone, accuracy, speed, and whether it invents details.</p>
+        <p>Qelvora works well for this because you can keep the same Mac workflow and change the installed Ollama model tag behind it. The local correction process is explained in the <a href="/blog/local-ollama-text-correction/">Ollama text correction guide</a>.</p>
         <h2>How Qelvora fits</h2>
         <p>Qelvora does not force one hosted model. It gives you a macOS workflow for installed local models, so you can change model tags as better open models appear.</p>
-        <h2>Direct answer</h2>
+        <p>If the text is sensitive, pairing Qelvora with local inference can also reduce the need to paste drafts into a remote editor. The <a href="/blog/private-ai-writing-assistant-macos/">private AI writing guide</a> covers that use case in more detail.</p>
+        <h2>Quick takeaway</h2>
         <p>The best local LLMs for Qelvora writing correction are the models that run well on your Mac and preserve the meaning of selected text. Start by testing Gemma, Qwen, DeepSeek, Kimi, Mistral, Llama, and Phi through Ollama.</p>
+        <aside class="article-cta">
+          <div>
+            <strong>Try Qelvora on your Mac.</strong>
+            <p>Install the notarized DMG and connect it to the Ollama models you already use.</p>
+          </div>
+          <a class="button button-primary" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" rel="noopener noreferrer">Download Qelvora</a>
+        </aside>
+        <aside class="article-related">
+          <strong>Related guides</strong>
+          <nav aria-label="Related Qelvora guides">
+            <a href="/blog/local-ollama-text-correction/">Ollama workflow</a>
+            <a href="/blog/private-ai-writing-assistant-macos/">Privacy guide</a>
+            <a href="/#models-title">Model marquee</a>
+          </nav>
+        </aside>
       </article>
     </main>
     <footer class="site-footer"><div class="footer-links"><a href="/blog/">All guides</a><a href="/llms.txt">LLMs.txt</a><a href="https://github.com/CyrilDieumegard/Qelvora" rel="noopener noreferrer">GitHub</a></div></footer>

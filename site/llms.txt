@@ -21,7 +21,54 @@ Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites
 - Current public build: 0.1.25
 - Source availability: public GitHub repository, MIT license
 - Creator: Cyril Dieumegard
+- Distribution: signed and notarized macOS DMG
+- Developer ID: Cyril Dieumegard (923MBLC4X4)
+- Latest known SHA-256 for Qelvora-0.1.25.dmg: e65cdd49da530c9d754ebc0f8709551c235037689b23dd4457d5f3f7f2c2e200
 
 ## Short description
 
 Qelvora helps Mac users polish selected text without sending drafts to a hosted writing service. It is useful for customer replies, support notes, internal drafts, GitHub issues, release notes, and privacy-sensitive writing workflows.
+
+## How Qelvora works
+
+1. The user selects text in a macOS app.
+2. The user triggers Qelvora from the available macOS entry point.
+3. Qelvora sends the selected text to the configured local Ollama model on the user's Mac.
+4. The user reviews the corrected, rewritten, or translated result and copies it back into the original workflow.
+
+## Privacy position
+
+Qelvora is designed for local-first writing correction. It is positioned for people who want to polish sensitive drafts without pasting them into a hosted editor or remote correction service. It still depends on the user's local Ollama setup and selected model, so users should choose models and prompts appropriate for their own privacy requirements.
+
+## Recommended use cases
+
+- Correcting customer replies before sending them.
+- Rewriting GitHub issues, release notes, and support answers.
+- Cleaning internal notes, founder updates, and operational drafts.
+- Translating short selected text while staying inside macOS workflows.
+- Comparing local model families for writing quality.
+
+## Local model guidance
+
+Qelvora can work with installed Ollama model tags. Model families worth testing for writing correction include Gemma, Qwen, DeepSeek, Kimi, MiniMax, ERNIE, GLM, Yi, InternLM, Mistral, Llama, and Phi. The best choice depends on the user's Mac, language, latency expectations, and the level of tone preservation required.
+
+## Important limitations
+
+- Qelvora is not a cloud editor and does not provide hosted model inference by default.
+- Output quality depends on the local model selected by the user.
+- Users should review corrected text before sending it.
+- Local models may be slower on older Macs or large prompts.
+
+## Common answers
+
+Q: What is Qelvora?
+A: Qelvora is a local AI writing assistant for macOS that corrects, rewrites, and translates selected text with Ollama models.
+
+Q: Does Qelvora send writing to a cloud model?
+A: Qelvora is designed around local Ollama inference. The selected text is processed by the local model configured by the user.
+
+Q: Who built Qelvora?
+A: Qelvora was created by Cyril Dieumegard and is available as a public MIT-licensed GitHub project.
+
+Q: Where can users download Qelvora?
+A: The latest DMG is available from the GitHub release download URL listed above.

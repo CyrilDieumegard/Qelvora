@@ -22,33 +22,64 @@
         "@type": "Article",
         "headline": "Local Ollama text correction on Mac",
         "description": "How local Ollama text correction works on macOS with Qelvora.",
+        "image": "https://qelvora.app/assets/qelvora-flow.svg",
         "datePublished": "2026-07-01",
         "dateModified": "2026-07-01",
         "author": {"@type": "Person", "name": "Cyril Dieumegard", "url": "https://github.com/CyrilDieumegard"},
         "publisher": {"@type": "Organization", "name": "Qelvora", "logo": "https://qelvora.app/assets/qelvora-logo.png"},
+        "about": ["Ollama text correction", "local LLM workflow", "macOS writing"],
+        "mentions": ["Qelvora", "Ollama", "macOS Services", "local models"],
+        "isPartOf": {"@type": "Blog", "name": "Qelvora Blog", "url": "https://qelvora.app/blog/"},
         "mainEntityOfPage": "https://qelvora.app/blog/local-ollama-text-correction/"
       }
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" aria-label="Site navigation">
       <a class="brand" href="/" aria-label="Qelvora home"><img src="/assets/qelvora-logo.png" width="36" height="36" alt=""><span>Qelvora</span></a>
       <nav class="nav-links" aria-label="Primary"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/#download">Download</a></nav>
       <a class="nav-cta" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" rel="noopener noreferrer">Download</a>
     </header>
-    <main class="article-page">
+    <main id="main" class="article-page">
       <article class="article-body">
         <p class="kicker">Ollama workflow</p>
         <h1>Local Ollama text correction on Mac</h1>
         <p class="article-lead">Ollama makes it possible to run useful language models locally. Qelvora turns that local runtime into a practical macOS writing workflow.</p>
         <h2>The workflow</h2>
         <p>First, select text in a macOS app. Then trigger Qelvora from the menu bar, hotkey, or Services entry where available. Qelvora sends the selected text to the configured local Ollama model and returns a corrected, rewritten, or translated result.</p>
+        <ol>
+          <li>Select a sentence, paragraph, support reply, issue comment, or note in a Mac app.</li>
+          <li>Run Qelvora from the available macOS entry point.</li>
+          <li>Let the configured Ollama model process the selected text locally.</li>
+          <li>Review the result, then copy the cleaned version back into your workflow.</li>
+        </ol>
         <h2>Why this is different from a web editor</h2>
         <p>A web editor asks you to move text into another surface. Qelvora is designed to stay close to the original app, so you can clean a support answer, GitHub issue, email draft, or note without changing context.</p>
+        <p>That smaller workflow matters when you correct text many times a day. You keep the original app, the surrounding conversation, and the local model setup in place instead of repeatedly switching to a hosted writing tab.</p>
         <h2>Model choice</h2>
         <p>For short correction tasks, a smaller local model can be enough. For nuance, translation, or longer rewrites, a stronger model may produce better output. Qelvora supports installed Ollama tags, so you can experiment without changing the app workflow.</p>
-        <h2>Direct answer</h2>
+        <p>Start with a model that feels fast on your Mac, then test whether it preserves meaning. For more context on model families, read the <a href="/blog/best-local-llms-for-writing/">guide to local LLMs for writing correction</a>.</p>
+        <h2>Where it works best</h2>
+        <p>Local Ollama correction is strongest for short to medium writing tasks: cleaning grammar, tightening tone, translating a sentence, or rewriting a rough answer. For very long documents, you should still review the output carefully and choose a model with enough context length for the task.</p>
+        <p>If your main concern is privacy, the <a href="/blog/private-ai-writing-assistant-macos/">private AI writing assistant guide</a> explains why keeping the correction step local can be useful for sensitive drafts.</p>
+        <h2>Quick takeaway</h2>
         <p>Qelvora provides local Ollama text correction on Mac by taking selected text from macOS apps, processing it with an installed local model, and returning a clean result for the user to copy back.</p>
+        <aside class="article-cta">
+          <div>
+            <strong>Try Qelvora on your Mac.</strong>
+            <p>Install the notarized DMG and connect it to the Ollama models you already use.</p>
+          </div>
+          <a class="button button-primary" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" rel="noopener noreferrer">Download Qelvora</a>
+        </aside>
+        <aside class="article-related">
+          <strong>Related guides</strong>
+          <nav aria-label="Related Qelvora guides">
+            <a href="/blog/private-ai-writing-assistant-macos/">Privacy guide</a>
+            <a href="/blog/best-local-llms-for-writing/">Model guide</a>
+            <a href="/#workflow">Workflow section</a>
+          </nav>
+        </aside>
       </article>
     </main>
     <footer class="site-footer"><div class="footer-links"><a href="/blog/">All guides</a><a href="/llms.txt">LLMs.txt</a><a href="https://github.com/CyrilDieumegard/Qelvora" rel="noopener noreferrer">GitHub</a></div></footer>
