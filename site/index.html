@@ -3,18 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Qelvora - Private AI writing correction for macOS</title>
+    <title>Qelvora - Private local AI writing assistant for macOS</title>
     <meta
       name="description"
-      content="Qelvora is a native macOS menu bar app for private writing correction and translation with local Ollama models."
+      content="Qelvora is a private local AI writing assistant for macOS. Correct, rewrite, and translate selected text with Ollama models without sending drafts to a cloud editor."
     >
+    <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#f7fbff">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Qelvora">
-    <meta property="og:title" content="Qelvora - Private AI writing correction for macOS">
+    <meta property="og:title" content="Qelvora - Private local AI writing assistant for macOS">
     <meta property="og:description" content="Select text anywhere on your Mac, correct or translate it locally with Ollama, and keep drafts on your machine.">
     <meta property="og:image" content="https://qelvora.app/assets/qelvora-product-overview.svg">
     <meta property="og:url" content="https://qelvora.app/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Qelvora - Private local AI writing assistant for macOS">
+    <meta name="twitter:description" content="Correct, rewrite, and translate selected text on macOS with local Ollama models.">
+    <meta name="twitter:image" content="https://qelvora.app/assets/qelvora-product-overview.svg">
     <link rel="canonical" href="https://qelvora.app/">
     <link rel="icon" href="/assets/qelvora-logo.png">
     <link rel="apple-touch-icon" href="/assets/qelvora-logo.png">
@@ -24,6 +29,82 @@
       data-website-id="dfid_W7eRzb8fvbMBhDLkI1X2d"
       data-domain="qelvora.app"
       src="https://datafa.st/js/script.js">
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://qelvora.app/#organization",
+            "name": "Qelvora",
+            "url": "https://qelvora.app/",
+            "logo": "https://qelvora.app/assets/qelvora-logo.png",
+            "sameAs": [
+              "https://github.com/CyrilDieumegard/Qelvora",
+              "https://github.com/CyrilDieumegard"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://qelvora.app/#website",
+            "name": "Qelvora",
+            "url": "https://qelvora.app/",
+            "publisher": {
+              "@id": "https://qelvora.app/#organization"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://qelvora.app/#software",
+            "name": "Qelvora",
+            "url": "https://qelvora.app/",
+            "downloadUrl": "https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "macOS 14+",
+            "softwareVersion": "0.1.25",
+            "description": "Private local AI writing correction, rewriting, and translation for selected text on macOS using Ollama models.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "publisher": {
+              "@id": "https://qelvora.app/#organization"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://qelvora.app/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Qelvora?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Qelvora is a native macOS menu bar app that corrects, rewrites, and translates selected text with local Ollama models."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Qelvora send text to a cloud writing service?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Qelvora is designed for local model inference. Selected text is processed through Ollama on your Mac instead of a hosted correction pipeline."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which local LLMs can Qelvora use?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Qelvora works with Ollama model tags, including local writing models from families such as Gemma, Qwen, DeepSeek, Kimi, Mistral, Llama, and Phi when they are installed locally."
+                }
+              }
+            ]
+          }
+        ]
+      }
     </script>
   </head>
   <body>
@@ -39,6 +120,7 @@
         <a href="#stack">Stack</a>
         <a href="#workflow">Workflow</a>
         <a href="#privacy">Privacy</a>
+        <a href="/blog/">Blog</a>
         <a href="#download">Download</a>
       </nav>
       <a class="nav-cta" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" rel="noopener noreferrer">Download</a>
@@ -137,7 +219,7 @@
           <div class="model-track">
             <div class="model-set">
               <span class="model-pill"><img src="/assets/logo-alibaba-cloud.svg" width="22" height="22" alt=""><strong>Qwen3.6</strong></span>
-              <span class="model-pill"><img src="/assets/logo-google.svg" width="22" height="22" alt=""><strong>Gemma</strong></span>
+              <span class="model-pill"><img src="/assets/logo-gemma.svg" width="22" height="22" alt=""><strong>Gemma</strong></span>
               <span class="model-pill"><img src="/assets/logo-deepseek.svg" width="22" height="22" alt=""><strong>DeepSeek-V4</strong></span>
               <span class="model-pill"><img src="/assets/logo-moonshotai.svg" width="22" height="22" alt=""><strong>Kimi K2</strong></span>
               <span class="model-pill"><span class="model-mark">Z.ai</span><strong>GLM-5.2</strong></span>
@@ -152,7 +234,7 @@
             </div>
             <div class="model-set" aria-hidden="true">
               <span class="model-pill"><img src="/assets/logo-alibaba-cloud.svg" width="22" height="22" alt=""><strong>Qwen3.6</strong></span>
-              <span class="model-pill"><img src="/assets/logo-google.svg" width="22" height="22" alt=""><strong>Gemma</strong></span>
+              <span class="model-pill"><img src="/assets/logo-gemma.svg" width="22" height="22" alt=""><strong>Gemma</strong></span>
               <span class="model-pill"><img src="/assets/logo-deepseek.svg" width="22" height="22" alt=""><strong>DeepSeek-V4</strong></span>
               <span class="model-pill"><img src="/assets/logo-moonshotai.svg" width="22" height="22" alt=""><strong>Kimi K2</strong></span>
               <span class="model-pill"><span class="model-mark">Z.ai</span><strong>GLM-5.2</strong></span>
@@ -307,6 +389,55 @@
         </div>
       </section>
 
+      <section class="section seo-section" id="learn" aria-labelledby="learn-title">
+        <div class="section-head compact">
+          <p class="kicker">Guides</p>
+          <h2 id="learn-title">Learn local AI writing workflows.</h2>
+        </div>
+        <div class="article-grid">
+          <a class="article-card" href="/blog/private-ai-writing-assistant-macos/">
+            <span>Privacy</span>
+            <strong>Private AI writing assistant for macOS</strong>
+            <p>Why local correction matters for drafts, customer replies, support notes, and sensitive writing.</p>
+          </a>
+          <a class="article-card" href="/blog/local-ollama-text-correction/">
+            <span>Ollama</span>
+            <strong>Local Ollama text correction on Mac</strong>
+            <p>How selected text can move from any macOS app to a local model and back into your workflow.</p>
+          </a>
+          <a class="article-card" href="/blog/best-local-llms-for-writing/">
+            <span>Models</span>
+            <strong>Local LLMs for writing correction</strong>
+            <p>How to think about Gemma, Qwen, DeepSeek, Kimi, Mistral, Llama, and Phi for local text cleanup.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section faq-section" aria-labelledby="faq-title">
+        <div class="section-head compact">
+          <p class="kicker">FAQ</p>
+          <h2 id="faq-title">Answers for search engines, builders, and Mac users.</h2>
+        </div>
+        <div class="faq-grid">
+          <article>
+            <h3>What is Qelvora?</h3>
+            <p>Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites, and translates selected text using Ollama models running on your Mac.</p>
+          </article>
+          <article>
+            <h3>Does Qelvora send text to the cloud?</h3>
+            <p>Qelvora is built around local model inference. The product is designed for workflows where drafts, customer replies, or internal notes should stay on the machine.</p>
+          </article>
+          <article>
+            <h3>Which models work with Qelvora?</h3>
+            <p>Qelvora uses installed Ollama model tags. Local writing workflows can use model families such as Gemma, Qwen, DeepSeek, Kimi, Mistral, Llama, and Phi.</p>
+          </article>
+          <article>
+            <h3>Who is Qelvora for?</h3>
+            <p>Qelvora is useful for founders, developers, support teams, and privacy-first operators who need fast writing cleanup inside normal macOS apps.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="section release-section" id="download" aria-labelledby="download-title">
         <div class="release-card">
           <div>
@@ -339,6 +470,8 @@
       </div>
       <div class="footer-links">
         <a href="https://github.com/CyrilDieumegard/Qelvora" rel="noopener noreferrer">GitHub</a>
+        <a href="/blog/">Blog</a>
+        <a href="/llms.txt">LLMs.txt</a>
         <a href="/appcast.xml">Appcast</a>
         <a href="https://github.com/CyrilDieumegard/Qelvora/blob/main/LICENSE" rel="noopener noreferrer">MIT License</a>
       </div>

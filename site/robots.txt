@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://qelvora.app/sitemap.xml
+Host: https://qelvora.app
