@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "preview": "python3 -m http.server 8787 --directory site",
+    "deploy": "npx --yes wrangler@latest pages deploy site --project-name qelvora"
+  }
+}

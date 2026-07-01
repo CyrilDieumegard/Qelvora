@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Qelvora</title>
+        <item>
+            <title>0.1.25</title>
+            <pubDate>Wed, 01 Jul 2026 07:43:11 +0200</pubDate>
+            <link>https://qelvora.app</link>
+            <sparkle:version>26</sparkle:version>
+            <sparkle:shortVersionString>0.1.25</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.25.dmg" length="5085558" type="application/octet-stream" sparkle:edSignature="Af7Wo4lH3iI0iEYQiBGNJldW4aUCLeNorSLBP5XY8V2lWNYRMT9L71v4/36bLrxiV0WGroD9ffJbJXigKBylDQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora26-25.delta" sparkle:deltaFrom="25" length="293838" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="n8yiqoBz/d/0KP8z1Gh+zfpCgpdrwd6KOGaeFMumaaIHqT/4Oze3WaMSArGWlEnVux97W4qC4indbbaayljWBg=="/>
+            </sparkle:deltas>
+        </item>
+    </channel>
+</rss>

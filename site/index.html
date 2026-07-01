@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qelvora - Local-first writing correction for macOS</title>
+    <meta
+      name="description"
+      content="Qelvora is a native macOS menu bar app for local-first writing correction and translation with Ollama. Select text anywhere, correct it locally, and keep control of your words."
+    >
+    <meta name="theme-color" content="#0b1020">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Qelvora">
+    <meta property="og:title" content="Qelvora - Local-first writing correction for macOS">
+    <meta property="og:description" content="Correct and translate selected text across macOS with local Ollama models.">
+    <meta property="og:image" content="https://qelvora.app/assets/qelvora-hero.svg">
+    <meta property="og:url" content="https://qelvora.app/">
+    <link rel="canonical" href="https://qelvora.app/">
+    <link rel="icon" href="/assets/qelvora-logo.png">
+    <link rel="apple-touch-icon" href="/assets/qelvora-logo.png">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" aria-label="Site navigation">
+      <a class="brand" href="/" aria-label="Qelvora home">
+        <img src="/assets/qelvora-logo.png" width="36" height="36" alt="">
+        <span>Qelvora</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#workflow">Workflow</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#download">Download</a>
+      </nav>
+      <a class="header-action" href="https://github.com/CyrilDieumegard/Qelvora" rel="noreferrer">GitHub</a>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="/assets/qelvora-hero.svg" alt="">
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow">Native macOS writing correction</p>
+          <h1>Correct and translate selected text with local AI.</h1>
+          <p class="hero-copy">
+            Qelvora is a menu bar app for macOS that helps you clean up spelling,
+            grammar, tone, and translations without sending your draft to a remote service.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest" rel="noreferrer">
+              Download for macOS
+            </a>
+            <a class="button secondary" href="https://github.com/CyrilDieumegard/Qelvora" rel="noreferrer">
+              View source
+            </a>
+          </div>
+          <dl class="hero-facts" aria-label="Product highlights">
+            <div>
+              <dt>Local</dt>
+              <dd>Runs through Ollama on your Mac.</dd>
+            </div>
+            <div>
+              <dt>System-wide</dt>
+              <dd>Works from selected text in other apps.</dd>
+            </div>
+            <div>
+              <dt>Open source</dt>
+              <dd>MIT-licensed Swift project.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section intro-section" aria-labelledby="intro-title">
+        <div class="section-heading">
+          <p class="eyebrow">Why Qelvora</p>
+          <h2 id="intro-title">A correction layer that stays close to your work.</h2>
+        </div>
+        <div class="intro-grid">
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">01</span>
+            <h3>Select text anywhere</h3>
+            <p>Use Qelvora from browsers, chat apps, notes, editors, and other macOS apps that expose selected text.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">02</span>
+            <h3>Correct locally</h3>
+            <p>Send the captured text to your local Ollama model for correction, rewriting, or translation.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">03</span>
+            <h3>Keep control</h3>
+            <p>Copy the cleaned result, replace the original text, or switch language from the result panel.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <p class="eyebrow">Workflow</p>
+          <h2 id="workflow-title">From selected text to polished result.</h2>
+          <p>Qelvora combines macOS text capture, fallback OCR, and local model inference into one short flow.</p>
+        </div>
+        <div class="workflow-visual">
+          <img src="/assets/qelvora-flow.svg" alt="Qelvora workflow: select text, capture it locally, correct it with Ollama, then use the result.">
+        </div>
+      </section>
+
+      <section class="section split-section" id="privacy" aria-labelledby="privacy-title">
+        <div class="section-heading">
+          <p class="eyebrow">Privacy model</p>
+          <h2 id="privacy-title">Local-first by design.</h2>
+          <p>
+            Qelvora is built for people who want writing help without routing drafts
+            through a hosted correction service.
+          </p>
+        </div>
+        <div class="detail-list">
+          <article>
+            <h3>Ollama backend</h3>
+            <p>Corrections and translations are generated by the model installed on your Mac.</p>
+          </article>
+          <article>
+            <h3>Native permissions</h3>
+            <p>Qelvora uses macOS Accessibility and Screen Recording only for capture and fallback OCR.</p>
+          </article>
+          <article>
+            <h3>Transparent source</h3>
+            <p>The public repository is the source of truth for how capture, correction, and updates work.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section requirements-section" id="requirements" aria-labelledby="requirements-title">
+        <div class="section-heading">
+          <p class="eyebrow">Setup</p>
+          <h2 id="requirements-title">What you need to run it.</h2>
+        </div>
+        <div class="requirements-grid">
+          <div>
+            <h3>macOS</h3>
+            <p>macOS 14 Sonoma or newer.</p>
+          </div>
+          <div>
+            <h3>Ollama</h3>
+            <p>Ollama installed locally with at least one pulled model.</p>
+          </div>
+          <div>
+            <h3>Permissions</h3>
+            <p>Accessibility permission, plus Screen Recording for OCR fallback.</p>
+          </div>
+          <div>
+            <h3>Models</h3>
+            <p>Recommended models, installed models, and custom model tags are supported.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section download-section" id="download" aria-labelledby="download-title">
+        <div class="download-panel">
+          <div>
+            <p class="eyebrow">Distribution</p>
+            <h2 id="download-title">Open source project, official convenience build.</h2>
+            <p>
+              The source code is free to build. The official DMG is the convenient path
+              for users who want a packaged macOS app with updates.
+            </p>
+          </div>
+          <div class="download-actions">
+            <a class="button primary" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest" rel="noreferrer">
+              Latest release
+            </a>
+            <a class="button secondary" href="/appcast.xml">Sparkle appcast</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Practical notes.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Does Qelvora require an internet connection?</summary>
+            <p>Correction runs through your local Ollama instance. Internet access may still be needed to install Ollama, pull models, or download updates.</p>
+          </details>
+          <details>
+            <summary>Why does it need macOS permissions?</summary>
+            <p>Accessibility lets Qelvora work with selected text across apps. Screen Recording enables OCR fallback when an app does not expose selected text cleanly.</p>
+          </details>
+          <details>
+            <summary>Can I use my own model?</summary>
+            <p>Yes. Qelvora can use recommended models, detect installed Ollama models, and accept custom names such as <code>llama3.1:8b</code>.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Qelvora.app</p>
+      <div>
+        <a href="https://github.com/CyrilDieumegard/Qelvora" rel="noreferrer">GitHub</a>
+        <a href="/appcast.xml">Appcast</a>
+        <a href="https://github.com/CyrilDieumegard/Qelvora/blob/main/LICENSE" rel="noreferrer">MIT License</a>
+      </div>
+    </footer>
+  </body>
+</html>
