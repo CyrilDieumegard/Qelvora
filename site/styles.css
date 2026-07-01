@@ -581,32 +581,38 @@ summary:focus-visible {
 }
 
 .model-set {
-  padding-right: 0.72rem;
+  padding-right: 1.6rem;
 }
 
 .model-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.58rem;
-  min-height: 48px;
+  gap: 0.54rem;
+  min-height: 40px;
   white-space: nowrap;
-  border: 1px solid rgba(17, 24, 32, 0.11);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 16px 42px rgba(31, 52, 73, 0.08);
   color: rgba(17, 24, 32, 0.84);
-  padding: 0.58rem 0.92rem;
+  padding: 0.38rem 0.2rem;
 }
 
 .model-pill strong {
   font-weight: 900;
 }
 
-.model-pill small {
-  color: var(--accent-blue);
-  font-size: 0.74rem;
-  font-weight: 850;
-  text-transform: uppercase;
+.model-pill img {
+  width: 1.35rem;
+  height: 1.35rem;
+  object-fit: contain;
+  opacity: 0.82;
+}
+
+.model-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(80, 89, 101, 0.72);
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .section {
@@ -1295,7 +1301,7 @@ summary:focus-visible {
 
   .model-pill {
     min-height: 42px;
-    padding: 0.5rem 0.78rem;
+    padding: 0.38rem 0.12rem;
   }
 
   .release-card {
