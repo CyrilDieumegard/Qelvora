@@ -1,0 +1,69 @@
+<svg width="1280" height="520" viewBox="0 0 1280 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">How Qelvora works</title>
+  <desc id="desc">A four step workflow showing how Qelvora captures, corrects, reviews and exports selected text locally.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111F"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0B84FF"/>
+      <stop offset="1" stop-color="#16C6D8"/>
+    </linearGradient>
+    <style>
+      .font { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="520" rx="34" fill="url(#bg)"/>
+  <text class="font" x="70" y="84" fill="#F9FAFB" font-size="42" font-weight="900">How Qelvora works</text>
+  <text class="font" x="70" y="124" fill="#94A3B8" font-size="21" font-weight="600">A fast local pipeline for correction and translation on macOS.</text>
+
+  <g transform="translate(70 182)">
+    <rect x="0" y="0" width="260" height="236" rx="28" fill="#172033" stroke="#2B3A55"/>
+    <rect x="28" y="28" width="56" height="56" rx="18" fill="url(#brand)"/>
+    <text class="font" x="48" y="66" fill="white" font-size="26" font-weight="900">1</text>
+    <text class="font" x="28" y="120" fill="#F9FAFB" font-size="28" font-weight="850">Select text</text>
+    <text class="font" x="28" y="158" fill="#A7B2C2" font-size="18" font-weight="600">Highlight text in any</text>
+    <text class="font" x="28" y="184" fill="#A7B2C2" font-size="18" font-weight="600">application, then trigger</text>
+    <text class="mono" x="28" y="212" fill="#E5E7EB" font-size="17" font-weight="800">Option + .</text>
+  </g>
+
+  <g transform="translate(365 182)">
+    <rect x="0" y="0" width="260" height="236" rx="28" fill="#172033" stroke="#2B3A55"/>
+    <rect x="28" y="28" width="56" height="56" rx="18" fill="url(#brand)"/>
+    <text class="font" x="47" y="66" fill="white" font-size="26" font-weight="900">2</text>
+    <text class="font" x="28" y="120" fill="#F9FAFB" font-size="28" font-weight="850">Capture locally</text>
+    <text class="font" x="28" y="158" fill="#A7B2C2" font-size="18" font-weight="600">Qelvora reads selection</text>
+    <text class="font" x="28" y="184" fill="#A7B2C2" font-size="18" font-weight="600">with clipboard, services,</text>
+    <text class="font" x="28" y="210" fill="#A7B2C2" font-size="18" font-weight="600">or OCR fallback.</text>
+  </g>
+
+  <g transform="translate(660 182)">
+    <rect x="0" y="0" width="260" height="236" rx="28" fill="#172033" stroke="#2B3A55"/>
+    <rect x="28" y="28" width="56" height="56" rx="18" fill="url(#brand)"/>
+    <text class="font" x="47" y="66" fill="white" font-size="26" font-weight="900">3</text>
+    <text class="font" x="28" y="120" fill="#F9FAFB" font-size="28" font-weight="850">Run Ollama</text>
+    <text class="font" x="28" y="158" fill="#A7B2C2" font-size="18" font-weight="600">The local model corrects,</text>
+    <text class="font" x="28" y="184" fill="#A7B2C2" font-size="18" font-weight="600">rewrites, or translates</text>
+    <text class="font" x="28" y="210" fill="#A7B2C2" font-size="18" font-weight="600">without cloud upload.</text>
+  </g>
+
+  <g transform="translate(955 182)">
+    <rect x="0" y="0" width="260" height="236" rx="28" fill="#172033" stroke="#2B3A55"/>
+    <rect x="28" y="28" width="56" height="56" rx="18" fill="url(#brand)"/>
+    <text class="font" x="46" y="66" fill="white" font-size="26" font-weight="900">4</text>
+    <text class="font" x="28" y="120" fill="#F9FAFB" font-size="28" font-weight="850">Review result</text>
+    <text class="font" x="28" y="158" fill="#A7B2C2" font-size="18" font-weight="600">See language, word count,</text>
+    <text class="font" x="28" y="184" fill="#A7B2C2" font-size="18" font-weight="600">errors, and copy the clean</text>
+    <text class="font" x="28" y="210" fill="#A7B2C2" font-size="18" font-weight="600">version back anywhere.</text>
+  </g>
+
+  <path d="M335 300H354" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M354 300L346 292M354 300L346 308" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M630 300H649" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M649 300L641 292M649 300L641 308" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M925 300H944" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M944 300L936 292M944 300L936 308" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/>
+</svg>

@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/assets/qelvora-hero.svg" alt="Qelvora correction panel preview">
+  <img src="docs/assets/qelvora-product-overview.svg" alt="Qelvora product overview">
 </p>
 
 ## What It Does
@@ -35,6 +35,27 @@ It is designed for writers, founders, builders, students, and anyone who wants a
 - **Flexible models**: recommended models are included, installed Ollama models are detected, and custom `model:tag` names are supported.
 - **Open source**: the public repository is the source of truth.
 
+## How It Works
+
+<p align="center">
+  <img src="docs/assets/qelvora-how-it-works.svg" alt="How Qelvora works">
+</p>
+
+1. Select text in any macOS app.
+2. Trigger Qelvora from the hotkey, the menu bar, or the macOS Services entry where available.
+3. Qelvora captures the text locally using the best available method: Services, clipboard, Accessibility, or OCR fallback.
+4. The selected Ollama model corrects or translates the text.
+5. Review the result, detected source language, word count, highlighted issues, and copy the final version.
+
+## Product Tour
+
+| Surface | Purpose |
+| --- | --- |
+| Menu bar panel | Fast access to correction, writing mode, model selection, and updates |
+| Result panel | Correction output, detected language, error highlights, word count, copy button, translation actions |
+| Settings | Hotkey, macOS permissions, output style, model management, right-click service repair |
+| OCR fallback | Handles apps that do not expose selected text through native selection APIs |
+
 ## Product Model
 
 The code is open source and free to build.
@@ -46,7 +67,7 @@ The official DMG is the paid convenience build: signed, notarized, packaged, tes
 | Source code | Developers | Full Swift/Xcode project under MIT |
 | Official DMG | Users | Signed app, clean installer, support, updates |
 
-## Preview
+## Workflow Preview
 
 <p align="center">
   <img src="docs/assets/qelvora-flow.svg" alt="Qelvora workflow diagram">
