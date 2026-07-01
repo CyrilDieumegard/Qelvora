@@ -447,8 +447,8 @@ summary:focus-visible {
 }
 
 .score-row .score-good {
-  color: var(--accent-blue);
-  background: rgba(47, 214, 163, 0.12);
+  color: #32e08a;
+  background: rgba(47, 214, 163, 0.16);
 }
 
 .score-row .score-alert {
@@ -552,19 +552,24 @@ summary:focus-visible {
   text-align: center;
 }
 
-.logo-grid svg {
-  width: 2.35rem;
-  height: 2.35rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.6;
+.logo-grid img {
+  width: 2.65rem;
+  height: 2.65rem;
+  object-fit: contain;
 }
 
-.logo-grid a:nth-child(2) svg {
-  fill: currentColor;
-  stroke: none;
+.logo-wordmark strong {
+  display: grid;
+  min-width: 3.15rem;
+  min-height: 2.65rem;
+  place-items: center;
+  border: 1px solid rgba(17, 24, 32, 0.12);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #505965;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 .section-head {

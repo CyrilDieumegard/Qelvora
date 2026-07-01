@@ -32,6 +32,6 @@
     <path d="M804 150H827" stroke="url(#blue)" stroke-width="5" stroke-linecap="round"/>
     <path d="M827 150L818 141M827 150L818 159" stroke="url(#blue)" stroke-width="5" stroke-linecap="round"/>
     <rect x="444" y="246" width="232" height="34" rx="17" fill="#052E1A"/>
-    <text x="476" y="269" fill="#4ADE80" font-size="16" font-weight="800">Private by default</text>
+    <text x="476" y="269" fill="#2F80FF" font-size="16" font-weight="800">Private by default</text>
   </g>
 </svg>

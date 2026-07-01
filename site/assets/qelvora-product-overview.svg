@@ -58,7 +58,7 @@
 
     <g transform="translate(34 132)">
       <rect x="0" y="0" width="118" height="42" rx="21" fill="#14351F"/>
-      <text class="font" x="27" y="28" fill="#4ADE80" font-size="17" font-weight="850">86% right</text>
+      <text class="font" x="27" y="28" fill="#2F80FF" font-size="17" font-weight="850">86% right</text>
       <rect x="132" y="0" width="112" height="42" rx="21" fill="#343434"/>
       <text class="font" x="163" y="28" fill="#D4D4D4" font-size="17" font-weight="800">7 words</text>
       <rect x="258" y="0" width="136" height="42" rx="21" fill="#2B1B1B"/>
@@ -79,7 +79,7 @@
     <text class="font" x="32" y="45" fill="#E5E7EB" font-size="23" font-weight="850">Private by default</text>
     <text class="font" x="32" y="82" fill="#94A3B8" font-size="18" font-weight="600">Text is corrected locally with Ollama.</text>
     <circle cx="332" cy="48" r="20" fill="#22C55E" opacity="0.18"/>
-    <path d="M323 48l7 7 14-17" stroke="#4ADE80" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M323 48l7 7 14-17" stroke="#2F80FF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g transform="translate(530 608)">
     <rect x="0" y="0" width="382" height="130" rx="26" fill="#0F172A"/>
