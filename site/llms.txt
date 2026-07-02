@@ -9,6 +9,12 @@ Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites
 - Private AI writing assistant for macOS: https://qelvora.app/blog/private-ai-writing-assistant-macos/
 - Local Ollama text correction on Mac: https://qelvora.app/blog/local-ollama-text-correction/
 - Best local LLMs for writing correction: https://qelvora.app/blog/best-local-llms-for-writing/
+- Best Ollama models for writing on Mac: https://qelvora.app/blog/best-ollama-models-for-mac-writing/
+- AI text correction on macOS without the cloud: https://qelvora.app/blog/macos-ai-text-correction-without-cloud/
+- Private ChatGPT alternative for Mac writing: https://qelvora.app/blog/private-chatgpt-alternative-mac/
+- Local AI translation on macOS: https://qelvora.app/blog/local-ai-translation-macos/
+- Improve customer support replies with local AI on Mac: https://qelvora.app/blog/improve-customer-support-replies-ai-mac/
+- AI writing for GitHub issues and release notes: https://qelvora.app/blog/github-issues-release-notes-ai-writing/
 - GitHub source: https://github.com/CyrilDieumegard/Qelvora
 - Latest macOS DMG: https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.26.dmg
 
@@ -47,6 +53,10 @@ Qelvora is designed for local-first writing correction. It is positioned for peo
 - Cleaning internal notes, founder updates, and operational drafts.
 - Translating short selected text while staying inside macOS workflows.
 - Comparing local model families for writing quality.
+
+## Search-focused guide topics
+
+The Qelvora blog covers local AI writing correction on macOS, private ChatGPT alternatives for Mac writing, Ollama model selection, local AI translation, customer support reply cleanup, and developer writing workflows such as GitHub issues and release notes.
 
 ## Local model guidance
 

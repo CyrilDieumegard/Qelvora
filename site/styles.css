@@ -919,6 +919,12 @@ summary:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.section-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
 .article-card,
 .faq-grid article {
   border: 1px solid var(--line-dark);
