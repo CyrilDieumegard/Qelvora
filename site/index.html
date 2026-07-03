@@ -3,22 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Qelvora - Private local AI writing assistant for macOS</title>
+    <title>Qelvora - Local spell checker and private AI writing assistant for macOS</title>
     <meta
       name="description"
-      content="Qelvora is a private local AI writing assistant for macOS. Correct, rewrite, and translate selected text with Ollama models without sending drafts to a cloud editor."
+      content="Qelvora is a local spell checker, local grammar checker, and private AI writing assistant for macOS. Correct selected text with local Ollama LLMs without a cloud editor."
     >
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#f7fbff">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Qelvora">
-    <meta property="og:title" content="Qelvora - Private local AI writing assistant for macOS">
-    <meta property="og:description" content="Select text anywhere on your Mac, correct or translate it locally with Ollama, and keep drafts on your machine.">
+    <meta property="og:title" content="Qelvora - Local spell checker and private AI writing assistant for macOS">
+    <meta property="og:description" content="Select text anywhere on your Mac, correct spelling and grammar locally with Ollama, and keep drafts on your machine.">
     <meta property="og:image" content="https://qelvora.app/assets/qelvora-product-overview.svg">
     <meta property="og:url" content="https://qelvora.app/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Qelvora - Private local AI writing assistant for macOS">
-    <meta name="twitter:description" content="Correct, rewrite, and translate selected text on macOS with local Ollama models.">
+    <meta name="twitter:title" content="Qelvora - Local spell checker and private AI writing assistant for macOS">
+    <meta name="twitter:description" content="Correct spelling, grammar, rewriting, and translation on macOS with local Ollama models.">
     <meta name="twitter:image" content="https://qelvora.app/assets/qelvora-product-overview.svg">
     <link rel="canonical" href="https://qelvora.app/">
     <link rel="icon" href="/assets/qelvora-logo.png">
@@ -30,6 +30,7 @@
       data-domain="qelvora.app"
       src="https://datafa.st/js/script.js">
     </script>
+    <script defer src="/analytics.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -63,7 +64,7 @@
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "macOS 14+",
             "softwareVersion": "0.1.26",
-            "description": "Private local AI writing correction, rewriting, and translation for selected text on macOS using Ollama models.",
+            "description": "Local spell checker, local grammar checker, and private AI writing correction for selected text on macOS using Ollama models.",
             "offers": {
               "@type": "Offer",
               "price": "0",
@@ -82,7 +83,7 @@
                 "name": "What is Qelvora?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Qelvora is a native macOS menu bar app that corrects, rewrites, and translates selected text with local Ollama models."
+                  "text": "Qelvora is a native macOS menu bar app and local spell checker that corrects, rewrites, and translates selected text with local Ollama models."
                 }
               },
               {
@@ -99,6 +100,14 @@
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Qelvora works with Ollama model tags, including local writing models from families such as Gemma, Qwen, DeepSeek, Kimi, Mistral, Llama, and Phi when they are installed locally."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Qelvora a local grammar checker?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Qelvora can act as a local grammar checker and local LLM corrector for selected text on macOS using installed Ollama model tags."
                 }
               }
             ]
@@ -251,7 +260,31 @@
         </div>
       </section>
 
-      <section class="stack-section" id="stack" aria-labelledby="stack-title">
+      <section class="section keyword-section" id="local-spell-checker" aria-labelledby="keyword-title" data-fast-scroll="scroll_to_local_spell_checker">
+        <div class="section-head compact">
+          <p class="kicker">Local spell checker</p>
+          <h2 id="keyword-title">A local spell checker and grammar checker powered by local LLMs.</h2>
+        </div>
+        <div class="keyword-grid" aria-label="Local AI correction keywords">
+          <article>
+            <strong>Local spell checker</strong>
+            <p>Correct spelling and grammar in selected macOS text with Ollama models running locally.</p>
+            <a href="/blog/local-spell-checker-llm-mac/">Read the guide</a>
+          </article>
+          <article>
+            <strong>Local grammar checker</strong>
+            <p>Improve tone, clarity, grammar, and short rewrites without opening a cloud writing editor.</p>
+            <a href="/blog/local-grammar-checker-macos/">See grammar workflow</a>
+          </article>
+          <article>
+            <strong>Correcteur orthographique local</strong>
+            <p>Qelvora also targets the French search: correcteur orthographique local avec LLM local.</p>
+            <a href="/blog/correcteur-orthographique-local-llm/">Open keyword page</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="stack-section" id="stack" aria-labelledby="stack-title" data-fast-scroll="scroll_to_stack">
         <div class="stack-copy">
           <p class="kicker">Trusted local stack</p>
           <h2 id="stack-title">Built on tools developers already trust.</h2>
@@ -284,10 +317,10 @@
         </div>
       </section>
 
-      <section class="section section-light" id="why" aria-labelledby="why-title">
+      <section class="section section-light" id="why" aria-labelledby="why-title" data-fast-scroll="scroll_to_why">
         <div class="section-head">
           <p class="kicker">Why Qelvora</p>
-          <h2 id="why-title">A correction layer designed for actual Mac workflows.</h2>
+          <h2 id="why-title">A local LLM correction layer designed for actual Mac workflows.</h2>
         </div>
         <div class="feature-grid">
           <article>
@@ -298,7 +331,7 @@
           <article>
             <p class="feature-mark">02</p>
             <h3>Local by design</h3>
-            <p>Your selected text is corrected by Ollama on your Mac, not by a hosted writing service.</p>
+            <p>Your selected text is corrected by a local LLM through Ollama on your Mac, not by a hosted writing service.</p>
           </article>
           <article>
             <p class="feature-mark">03</p>
@@ -389,7 +422,7 @@
         </div>
       </section>
 
-      <section class="section seo-section" id="learn" aria-labelledby="learn-title">
+      <section class="section seo-section" id="learn" aria-labelledby="learn-title" data-fast-scroll="scroll_to_blog_guides">
         <div class="section-head compact">
           <p class="kicker">Guides</p>
           <h2 id="learn-title">Learn local AI writing workflows.</h2>
@@ -410,13 +443,28 @@
             <strong>Local LLMs for writing correction</strong>
             <p>How to think about Gemma, Qwen, DeepSeek, Kimi, Mistral, Llama, and Phi for local text cleanup.</p>
           </a>
+          <a class="article-card" href="/blog/local-spell-checker-llm-mac/">
+            <span>Spell check</span>
+            <strong>Local spell checker with local LLMs for Mac</strong>
+            <p>Use Qelvora as a local spell checker and grammar checker powered by Ollama models.</p>
+          </a>
+          <a class="article-card" href="/blog/correcteur-orthographique-local-llm/">
+            <span>French SEO</span>
+            <strong>Correcteur orthographique local avec LLM local</strong>
+            <p>A targeted guide for users searching for private local correction with a local LLM.</p>
+          </a>
+          <a class="article-card" href="/blog/local-grammar-checker-macos/">
+            <span>Grammar</span>
+            <strong>Local grammar checker for macOS</strong>
+            <p>Correct grammar, tone, and short rewrites while keeping drafts inside your Mac workflow.</p>
+          </a>
         </div>
         <div class="section-actions">
           <a class="button button-secondary" href="/blog/">Explore all Qelvora guides</a>
         </div>
       </section>
 
-      <section class="section faq-section" aria-labelledby="faq-title">
+      <section class="section faq-section" aria-labelledby="faq-title" data-fast-scroll="scroll_to_faq">
         <div class="section-head compact">
           <p class="kicker">FAQ</p>
           <h2 id="faq-title">Straight answers before you install.</h2>
@@ -424,7 +472,11 @@
         <div class="faq-grid">
           <article>
             <h3>What is Qelvora?</h3>
-            <p>Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites, and translates selected text using Ollama models running on your Mac.</p>
+            <p>Qelvora is a private local AI writing assistant and local spell checker for macOS. It corrects, rewrites, and translates selected text using Ollama models running on your Mac.</p>
+          </article>
+          <article>
+            <h3>Is Qelvora a local grammar checker?</h3>
+            <p>Yes. Qelvora can act as a local grammar checker and local LLM corrector for selected text, using installed Ollama model tags instead of a hosted writing service.</p>
           </article>
           <article>
             <h3>Does Qelvora send text to the cloud?</h3>
@@ -441,7 +493,7 @@
         </div>
       </section>
 
-      <section class="section release-section" id="download" aria-labelledby="download-title">
+      <section class="section release-section" id="download" aria-labelledby="download-title" data-fast-scroll="scroll_to_download">
         <div class="release-card">
           <div>
             <p class="kicker">Current release</p>

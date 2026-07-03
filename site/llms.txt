@@ -1,6 +1,6 @@
 # Qelvora
 
-Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites, and translates selected text using Ollama models running on the user's Mac.
+Qelvora is a private local AI writing assistant, local spell checker, and local grammar checker for macOS. It corrects, rewrites, and translates selected text using Ollama models running on the user's Mac.
 
 ## Core pages
 
@@ -8,6 +8,9 @@ Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites
 - Blog: https://qelvora.app/blog/
 - Private AI writing assistant for macOS: https://qelvora.app/blog/private-ai-writing-assistant-macos/
 - Local Ollama text correction on Mac: https://qelvora.app/blog/local-ollama-text-correction/
+- Local spell checker with local LLMs for Mac: https://qelvora.app/blog/local-spell-checker-llm-mac/
+- Local grammar checker for macOS: https://qelvora.app/blog/local-grammar-checker-macos/
+- Correcteur orthographique local avec LLM local: https://qelvora.app/blog/correcteur-orthographique-local-llm/
 - Best local LLMs for writing correction: https://qelvora.app/blog/best-local-llms-for-writing/
 - Best Ollama models for writing on Mac: https://qelvora.app/blog/best-ollama-models-for-mac-writing/
 - AI text correction on macOS without the cloud: https://qelvora.app/blog/macos-ai-text-correction-without-cloud/
@@ -21,7 +24,7 @@ Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites
 ## Product facts
 
 - Product: Qelvora
-- Category: macOS utility, local AI writing assistant, private writing correction
+- Category: macOS utility, local AI writing assistant, local spell checker, local grammar checker, private writing correction
 - Operating system: macOS 14+
 - Runtime: Ollama local models
 - Current public build: 0.1.26
@@ -33,7 +36,7 @@ Qelvora is a private local AI writing assistant for macOS. It corrects, rewrites
 
 ## Short description
 
-Qelvora helps Mac users polish selected text without sending drafts to a hosted writing service. It is useful for customer replies, support notes, internal drafts, GitHub issues, release notes, and privacy-sensitive writing workflows.
+Qelvora helps Mac users polish selected text without sending drafts to a hosted writing service. It works as a local spell checker and local grammar checker powered by local LLMs, and is useful for customer replies, support notes, internal drafts, GitHub issues, release notes, and privacy-sensitive writing workflows.
 
 ## How Qelvora works
 
@@ -56,7 +59,7 @@ Qelvora is designed for local-first writing correction. It is positioned for peo
 
 ## Search-focused guide topics
 
-The Qelvora blog covers local AI writing correction on macOS, private ChatGPT alternatives for Mac writing, Ollama model selection, local AI translation, customer support reply cleanup, and developer writing workflows such as GitHub issues and release notes.
+The Qelvora blog covers local AI writing correction on macOS, local spell checker workflows, local grammar checker workflows, the French query "correcteur orthographique local avec LLM local", private ChatGPT alternatives for Mac writing, Ollama model selection, local AI translation, customer support reply cleanup, and developer writing workflows such as GitHub issues and release notes.
 
 ## Local model guidance
 
@@ -72,7 +75,7 @@ Qelvora can work with installed Ollama model tags. Model families worth testing 
 ## Common answers
 
 Q: What is Qelvora?
-A: Qelvora is a local AI writing assistant for macOS that corrects, rewrites, and translates selected text with Ollama models.
+A: Qelvora is a local AI writing assistant, local spell checker, and local grammar checker for macOS that corrects, rewrites, and translates selected text with Ollama models.
 
 Q: Does Qelvora send writing to a cloud model?
 A: Qelvora is designed around local Ollama inference. The selected text is processed by the local model configured by the user.
