@@ -6,12 +6,30 @@ Qelvora is a private local AI writing assistant, local spell checker, and local 
 
 - Home: https://qelvora.app/
 - Blog: https://qelvora.app/blog/
-- Private AI writing assistant for macOS: https://qelvora.app/blog/private-ai-writing-assistant-macos/
-- Local Ollama text correction on Mac: https://qelvora.app/blog/local-ollama-text-correction/
+- Private AI writing for founders on macOS: https://qelvora.app/blog/private-ai-writing-for-founders-macos/
+- Local LLM email assistant for Mac: https://qelvora.app/blog/local-llm-email-assistant-mac/
+- Ollama writing assistant setup for macOS: https://qelvora.app/blog/ollama-setup-writing-assistant-macos/
+- Best prompts for local LLM text correction: https://qelvora.app/blog/best-prompts-local-llm-text-correction/
+- Local AI proofreading for customer support teams: https://qelvora.app/blog/local-ai-proofreading-for-customer-support/
+- Local AI for release notes and changelogs: https://qelvora.app/blog/local-ai-for-release-notes-changelogs/
+- Text correction in any macOS app with local AI: https://qelvora.app/blog/macos-text-correction-workflow-any-app/
+- Local AI translation and privacy on macOS: https://qelvora.app/blog/local-ai-translation-privacy-guide/
+- Qwen, DeepSeek, and Gemma for writing on Mac: https://qelvora.app/blog/qwen-deepseek-gemma-writing-mac/
+- Local grammar checker vs cloud grammar tools: https://qelvora.app/blog/local-grammar-checker-vs-grammarly/
+- Private AI writing for developers on Mac: https://qelvora.app/blog/private-ai-writing-for-developers/
+- Local AI for notes and meeting summaries on Mac: https://qelvora.app/blog/local-ai-notes-meeting-summaries-mac/
+- Local spell checker for French and English on macOS: https://qelvora.app/blog/local-spell-checker-french-english-macos/
+- AI writing without copy-pasting into the cloud: https://qelvora.app/blog/ai-writing-without-copy-paste-cloud/
+- Local LLM writing workflow for small teams: https://qelvora.app/blog/local-llm-writing-workflow-small-teams/
+- Polish coding assistant prompts locally on Mac: https://qelvora.app/blog/polish-coding-assistant-prompts-local-ai/
+- Why an AI writing assistant belongs in the macOS menu bar: https://qelvora.app/blog/macos-ai-writing-menu-bar-app/
+- Local AI writing security checklist for Mac users: https://qelvora.app/blog/local-ai-writing-security-checklist/
 - Local spell checker with local LLMs for Mac: https://qelvora.app/blog/local-spell-checker-llm-mac/
 - Local grammar checker for macOS: https://qelvora.app/blog/local-grammar-checker-macos/
 - Correcteur orthographique local avec LLM local: https://qelvora.app/blog/correcteur-orthographique-local-llm/
-- Best local LLMs for writing correction: https://qelvora.app/blog/best-local-llms-for-writing/
+- Private AI writing assistant for macOS: https://qelvora.app/blog/private-ai-writing-assistant-macos/
+- Local Ollama text correction on Mac: https://qelvora.app/blog/local-ollama-text-correction/
+- Local LLMs for writing correction: https://qelvora.app/blog/best-local-llms-for-writing/
 - Best Ollama models for writing on Mac: https://qelvora.app/blog/best-ollama-models-for-mac-writing/
 - AI text correction on macOS without the cloud: https://qelvora.app/blog/macos-ai-text-correction-without-cloud/
 - Private ChatGPT alternative for Mac writing: https://qelvora.app/blog/private-chatgpt-alternative-mac/
@@ -36,7 +54,7 @@ Qelvora is a private local AI writing assistant, local spell checker, and local 
 
 ## Short description
 
-Qelvora helps Mac users polish selected text without sending drafts to a hosted writing service. It works as a local spell checker and local grammar checker powered by local LLMs, and is useful for customer replies, support notes, internal drafts, GitHub issues, release notes, and privacy-sensitive writing workflows.
+Qelvora helps Mac users polish selected text without sending drafts to a hosted writing service. It works as a local spell checker and local grammar checker powered by local LLMs, and is useful for customer replies, support notes, internal drafts, GitHub issues, release notes, prompts for coding assistants, translations, emails, and privacy-sensitive writing workflows.
 
 ## How Qelvora works
 
@@ -53,13 +71,14 @@ Qelvora is designed for local-first writing correction. It is positioned for peo
 
 - Correcting customer replies before sending them.
 - Rewriting GitHub issues, release notes, and support answers.
-- Cleaning internal notes, founder updates, and operational drafts.
+- Cleaning internal notes, founder updates, emails, and operational drafts.
 - Translating short selected text while staying inside macOS workflows.
+- Polishing coding assistant prompts before sending them elsewhere.
 - Comparing local model families for writing quality.
 
 ## Search-focused guide topics
 
-The Qelvora blog covers local AI writing correction on macOS, local spell checker workflows, local grammar checker workflows, the French query "correcteur orthographique local avec LLM local", private ChatGPT alternatives for Mac writing, Ollama model selection, local AI translation, customer support reply cleanup, and developer writing workflows such as GitHub issues and release notes.
+The Qelvora blog covers local AI writing correction on macOS, local spell checker workflows, local grammar checker workflows, the French query "correcteur orthographique local avec LLM local", private ChatGPT alternatives for Mac writing, Ollama model selection, local AI translation, customer support reply cleanup, email polishing, release notes, coding assistant prompts, small team writing workflows, and developer writing workflows such as GitHub issues and changelogs.
 
 ## Local model guidance
 
