@@ -75,6 +75,19 @@
             }
           },
           {
+            "@type": "VideoObject",
+            "@id": "https://qelvora.app/#product-demo",
+            "name": "Qelvora product demo",
+            "description": "A short Qelvora demo showing local spell checking, local grammar correction, and selected-text rewriting on macOS with Ollama models.",
+            "thumbnailUrl": "https://qelvora.app/assets/qelvora-product-demo-poster.jpg",
+            "contentUrl": "https://qelvora.app/assets/qelvora-product-demo.mp4",
+            "uploadDate": "2026-07-03",
+            "duration": "PT32S",
+            "publisher": {
+              "@id": "https://qelvora.app/#organization"
+            }
+          },
+          {
             "@type": "FAQPage",
             "@id": "https://qelvora.app/#faq",
             "mainEntity": [
@@ -129,6 +142,7 @@
         <a href="#stack">Stack</a>
         <a href="#workflow">Workflow</a>
         <a href="#privacy">Privacy</a>
+        <a href="#demo">Demo</a>
         <a href="/blog/">Blog</a>
         <a href="#download">Download</a>
       </nav>
@@ -218,6 +232,35 @@
         <span>Notarized</span>
         <span>Sparkle updates</span>
         <span>MIT source</span>
+      </section>
+
+      <section class="section video-section" id="demo" aria-labelledby="demo-title" data-fast-scroll="scroll_to_demo">
+        <div class="video-copy">
+          <p class="kicker">Product demo</p>
+          <h2 id="demo-title">See Qelvora clean up text in a real Mac workflow.</h2>
+          <p>
+            Watch the selected-text flow: trigger Qelvora, run the correction locally with Ollama,
+            review the result, and bring the clean version back into your work.
+          </p>
+          <div class="video-points" aria-label="Demo highlights">
+            <span>32 second overview</span>
+            <span>Local model workflow</span>
+            <span>Native macOS correction</span>
+          </div>
+          <a class="button button-primary" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.26.dmg" rel="noopener noreferrer">Download Qelvora</a>
+        </div>
+        <div class="video-frame">
+          <video
+            data-analytics-video="qelvora_product_demo"
+            controls
+            playsinline
+            preload="metadata"
+            poster="/assets/qelvora-product-demo-poster.jpg"
+            aria-label="Qelvora product demo video"
+          >
+            <source src="/assets/qelvora-product-demo.mp4" type="video/mp4">
+          </video>
+        </div>
       </section>
 
       <section class="model-marquee-section" aria-label="Open-model friendly local LLMs">

@@ -17,6 +17,7 @@
   function placementFor(link) {
     if (link.closest(".site-header")) return "nav";
     if (link.closest(".hero")) return "hero";
+    if (link.closest(".video-section")) return "demo";
     if (link.closest(".release-section")) return "release";
     if (link.closest(".article-cta")) return "article_cta";
     if (link.closest(".site-footer")) return "footer";
@@ -70,6 +71,18 @@
     document.querySelectorAll(".article-card[href]").forEach(function (link) {
       link.addEventListener("click", function () {
         trackSimpleClick("blog_article_clicked", link);
+      });
+    });
+
+    document.querySelectorAll("video[data-analytics-video]").forEach(function (video) {
+      var played = false;
+      video.addEventListener("play", function () {
+        if (played) return;
+        played = true;
+        goal("product_video_played", {
+          page_path: window.location.pathname,
+          video_id: video.getAttribute("data-analytics-video") || "product_demo"
+        });
       });
     });
   }

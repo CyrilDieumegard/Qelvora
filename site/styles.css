@@ -537,6 +537,77 @@ summary:focus-visible {
   border-right: 0;
 }
 
+.video-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(280px, 0.58fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-dark);
+  background:
+    linear-gradient(rgba(47, 128, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 128, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 82% 18%, rgba(47, 128, 255, 0.18), transparent 22rem),
+    linear-gradient(180deg, #f8fcff, #eef6ff);
+  background-size: 56px 56px, 56px 56px, auto, auto;
+}
+
+.video-copy {
+  display: grid;
+  gap: 1.35rem;
+  max-width: 780px;
+}
+
+.video-copy h2 {
+  max-width: 760px;
+  font-size: clamp(3rem, 6.4vw, 6.1rem);
+  line-height: 0.93;
+}
+
+.video-copy > p:not(.kicker) {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+  line-height: 1.55;
+}
+
+.video-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.video-points span {
+  border: 1px solid rgba(47, 128, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: rgba(17, 24, 32, 0.72);
+  padding: 0.62rem 0.82rem;
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.video-frame {
+  justify-self: center;
+  width: min(100%, 360px);
+  border: 1px solid rgba(17, 24, 32, 0.12);
+  border-radius: 32px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    #ffffff;
+  box-shadow: 0 34px 80px rgba(31, 52, 73, 0.18);
+  padding: 0.72rem;
+}
+
+.video-frame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 24px;
+  background: #101820;
+  object-fit: cover;
+}
+
 .model-marquee-section {
   overflow: hidden;
   padding: 1.55rem 4rem 1.65rem;
@@ -1383,6 +1454,7 @@ summary:focus-visible {
   .section,
   .stack-section,
   .model-marquee-section,
+  .video-section,
   .site-footer {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -1410,6 +1482,7 @@ summary:focus-visible {
   }
 
   .section-head h2,
+  .video-copy h2,
   .privacy-copy h2,
   .release-card h2 {
     font-size: 3rem;
@@ -1417,6 +1490,14 @@ summary:focus-visible {
 
   .stack-section {
     grid-template-columns: 1fr;
+  }
+
+  .video-section {
+    grid-template-columns: 1fr;
+  }
+
+  .video-frame {
+    width: min(100%, 330px);
   }
 
   .logo-grid {
@@ -1580,6 +1661,7 @@ summary:focus-visible {
   .section,
   .stack-section,
   .model-marquee-section,
+  .video-section,
   .site-footer {
     padding-left: 1rem;
     padding-right: 1rem;
