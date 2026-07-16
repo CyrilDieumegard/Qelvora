@@ -46,7 +46,7 @@ Qelvora is a private local AI writing assistant, local spell checker, and local 
 - Category: macOS utility, local AI writing assistant, local spell checker, local grammar checker, private writing correction
 - Operating system: macOS 14+
 - Runtime: Ollama local models
-- Capture modes: normal macOS text selection and rectangular-area local OCR for visible screen text
+- Capture modes: the global shortcut opens a mouse-drawn rectangular area for local OCR; a separate Correct selection action handles highlighted editable text
 - Current public build: 0.1.26
 - Source availability: public GitHub repository, MIT license
 - Creator: Cyril Dieumegard
@@ -60,10 +60,10 @@ Qelvora helps Mac users polish selected text without sending drafts to a hosted 
 
 ## How Qelvora works
 
-1. The user selects text in a macOS app or draws a rectangle around visible text when normal selection is awkward.
-2. Qelvora runs OCR locally on the Mac when a rectangular area is used.
-3. The user triggers correction, rewriting, or translation from the available Qelvora entry point.
-4. Qelvora sends the selected or recognized text to the configured local Ollama model on the user's Mac.
+1. The user presses Qelvora's global shortcut to open the rectangular screen-area selector, then drags around the exact visible text to capture.
+2. Qelvora runs OCR locally on the Mac for that rectangle.
+3. For editable text, the user can instead highlight words and choose the separate Correct selection action from the menu bar or macOS Services, which skips OCR.
+4. Qelvora sends the selected or recognized text to the configured local Ollama model on the user's Mac for correction, rewriting, or translation.
 5. The user reviews the result and returns it to the original workflow.
 
 ## Privacy position
@@ -105,7 +105,7 @@ Q: Does Qelvora send writing to a cloud model?
 A: Qelvora is designed around local Ollama inference. The selected text is processed by the local model configured by the user.
 
 Q: Can Qelvora correct or translate visible text in Discord?
-A: Yes. The user can select normal text or draw a rectangular area when selection is awkward. Qelvora runs OCR locally on the Mac and sends the recognized text to the configured local Ollama model for correction or translation.
+A: Yes. Pressing the global shortcut opens a rectangular selector that follows the mouse. Qelvora runs OCR locally on the chosen area and sends the recognized text to the configured local Ollama model. Highlighted editable text can still be handled separately with Correct selection.
 
 Q: Who built Qelvora?
 A: Qelvora was created by Cyril Dieumegard and is available as a public MIT-licensed GitHub project.

@@ -48,7 +48,7 @@ final class AppState: ObservableObject {
 
         hotkeyManager.onPressed = { [weak coordinator] in
             Task { @MainActor in
-                await coordinator?.correctSelection()
+                await coordinator?.correctScreenRegion()
             }
         }
         hotkeyManager.start()

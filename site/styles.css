@@ -775,6 +775,20 @@ main > section[id] {
   font-size: 0.94rem;
 }
 
+.ocr-mode-note {
+  max-width: 660px;
+  margin-top: 1.35rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent-blue);
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.ocr-mode-note strong {
+  color: var(--ink);
+}
+
 .ocr-guide-link {
   display: inline-flex;
   align-items: center;

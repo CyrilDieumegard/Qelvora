@@ -41,11 +41,12 @@ It is designed for writers, founders, builders, students, and anyone who wants a
   <img src="docs/assets/qelvora-how-it-works.svg" alt="How Qelvora works">
 </p>
 
-1. Select text in any macOS app.
-2. Trigger Qelvora from the hotkey, the menu bar, or the macOS Services entry where available.
-3. Qelvora captures the text locally using the best available method: Services, clipboard, Accessibility, or OCR fallback.
-4. The selected Ollama model corrects or translates the text.
-5. Review the result, detected source language, word count, highlighted issues, and copy the final version.
+1. Press the global hotkey to open Qelvora's rectangular screen-area selector.
+2. Drag with the mouse around exactly the visible text you want to process.
+3. Qelvora reads that rectangle locally with OCR, then the selected Ollama model corrects or translates the recognized text.
+4. Review the result, detected source language, word count, highlighted issues, and copy the final version.
+
+For editable text, Qelvora also keeps a separate **Correct selection** action in the menu bar and macOS Services. This path uses the highlighted text directly and does not open the rectangle selector.
 
 ## Product Tour
 
@@ -54,7 +55,8 @@ It is designed for writers, founders, builders, students, and anyone who wants a
 | Menu bar panel | Fast access to correction, writing mode, model selection, and updates |
 | Result panel | Correction output, detected language, error highlights, word count, copy button, translation actions |
 | Settings | Hotkey, macOS permissions, output style, model management, right-click service repair |
-| OCR fallback | Handles apps that do not expose selected text through native selection APIs |
+| Screen-area selector | The global hotkey opens a precise mouse-drawn rectangle for local OCR |
+| Correct selection | Uses highlighted editable text from the menu bar or macOS Services |
 
 ## Product Model
 

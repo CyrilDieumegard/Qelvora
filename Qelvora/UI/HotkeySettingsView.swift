@@ -23,6 +23,11 @@ struct HotkeySettingsView: View {
                     .font(.caption)
                     .foregroundStyle(.orange)
                     .fixedSize(horizontal: false, vertical: true)
+            } else {
+                Text("The shortcut opens the rectangular screen-area selector. Use Correct selection for highlighted editable text.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
     }

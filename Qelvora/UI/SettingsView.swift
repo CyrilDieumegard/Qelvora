@@ -200,16 +200,28 @@ struct SettingsView: View {
     private var actionsCard: some View {
         SettingsCard(title: "Actions", systemImage: "bolt.fill") {
             VStack(spacing: 10) {
+                Button {
+                    Task {
+                        await appState.coordinator.correctScreenRegion()
+                    }
+                } label: {
+                    Label("Select screen area", systemImage: "viewfinder")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(appState.coordinator.isProcessing)
+
                 HStack(spacing: 10) {
                     Button {
                         Task {
                             await appState.coordinator.correctSelection()
                         }
                     } label: {
-                        Label("Correct", systemImage: "wand.and.stars")
+                        Label("Correct selection", systemImage: "text.cursor")
                             .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bordered)
                     .controlSize(.large)
                     .disabled(appState.coordinator.isProcessing)
 
@@ -222,18 +234,6 @@ struct SettingsView: View {
                     .buttonStyle(.bordered)
                     .controlSize(.large)
                 }
-
-                Button {
-                    Task {
-                        await appState.coordinator.correctScreenRegion()
-                    }
-                } label: {
-                    Label("Select screen area", systemImage: "viewfinder")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.bordered)
-                .controlSize(.large)
-                .disabled(appState.coordinator.isProcessing)
             }
         }
     }
@@ -262,9 +262,10 @@ struct SettingsView: View {
                         .foregroundStyle(.orange)
                         .fixedSize(horizontal: false, vertical: true)
                 } else {
-                    Text("Works everywhere, without relying on right click.")
+                    Text("The shortcut opens the rectangular screen-area selector. Use Correct selection for highlighted editable text.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             }
         }
@@ -318,7 +319,7 @@ struct SettingsView: View {
                     isHealthy: true
                 )
 
-                Text("Correct a normal text selection, or drag a rectangle around visible text when an app such as Discord does not expose it reliably.")
+                Text("The global shortcut opens a rectangle you draw with the mouse. Correct selection remains available separately for highlighted editable text.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)

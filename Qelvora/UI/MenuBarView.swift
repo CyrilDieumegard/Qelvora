@@ -28,7 +28,7 @@ struct MenuBarView: View {
                 Text("Qelvora")
                     .font(.system(size: 20, weight: .semibold))
 
-                Text(appState.hotkeyManager.hotkey.displayString)
+                Text("\(appState.hotkeyManager.hotkey.displayString) · Select area")
                     .font(.system(size: 12, weight: .medium, design: .monospaced))
                     .foregroundStyle(.secondary)
             }
@@ -41,16 +41,28 @@ struct MenuBarView: View {
 
     private var actions: some View {
         VStack(spacing: 8) {
+            Button {
+                Task {
+                    await appState.coordinator.correctScreenRegion()
+                }
+            } label: {
+                Label("Select screen area", systemImage: "viewfinder")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            .disabled(appState.coordinator.isProcessing)
+
             HStack(spacing: 8) {
                 Button {
                     Task {
                         await appState.coordinator.correctSelection()
                     }
                 } label: {
-                    Label("Correct", systemImage: "wand.and.stars")
+                    Label("Correct selection", systemImage: "text.cursor")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bordered)
                 .controlSize(.large)
                 .disabled(appState.coordinator.isProcessing)
 
@@ -63,18 +75,6 @@ struct MenuBarView: View {
                 .buttonStyle(.bordered)
                 .controlSize(.large)
             }
-
-            Button {
-                Task {
-                    await appState.coordinator.correctScreenRegion()
-                }
-            } label: {
-                Label("Select screen area", systemImage: "viewfinder")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
-            .disabled(appState.coordinator.isProcessing)
         }
     }
 

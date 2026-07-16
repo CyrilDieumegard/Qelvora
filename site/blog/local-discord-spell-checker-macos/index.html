@@ -99,15 +99,15 @@
         <p>Discord is a communication app, not a long-form document editor. A draft in the message composer, an older message in channel history, a code block, and text inside an embedded panel are different surfaces. Selecting exactly one sentence can be easy in one place and awkward in another. Translation options can also depend on the operating system, app version, language, and the specific part of the interface you are using.</p>
         <p>That does not mean Discord has no spelling assistance. Native and system-level spell-check behavior may already help in some contexts, and it can change over time. The practical gap appears when the built-in route does not cover the exact text in front of you, when you want more than typo detection, or when you need a quick translation without moving the whole conversation into a separate cloud editor.</p>
 
-        <h2>Qelvora offers selection first and rectangular OCR second</h2>
-        <p>The fastest path is still normal text selection. Highlight a draft, trigger Qelvora from the available macOS entry point, and ask your configured local model to correct spelling, improve grammar, preserve tone, rewrite, or translate. This is the right choice when the text is editable and macOS can expose the selection reliably.</p>
-        <p>The rectangular-area path is the fallback for visible text that is difficult to select cleanly. Draw a box around the sentence or message you need. Qelvora reads only that screen region with OCR on the Mac, converts the image of the words into text, and hands the recognized text to your local Ollama model. You can then review the result before placing it back into your workflow.</p>
+        <h2>The shortcut opens a rectangle, while normal selection remains available</h2>
+        <p>Qelvora keeps the two capture paths separate so the behavior is predictable. Press the global shortcut and Qelvora immediately opens a screen-area selector. Drag a box with the mouse around the exact sentence or message you need. Qelvora reads only that region with OCR on the Mac, converts the image of the words into text, and hands the recognized text to your local Ollama model.</p>
+        <p>For editable text, highlight the words and choose <strong>Correct selection</strong> from Qelvora's menu bar or the macOS Services entry. That route uses the selected text directly and skips OCR. Both options remain available; the shortcut is deliberately reserved for the precise rectangular workflow.</p>
         <p>This matters because the rectangle follows what you can see, not whether a particular app exposes a conventional text-selection API. See the <a href="/#screen-text">Discord-first rectangular OCR overview</a> on the Qelvora homepage for a visual example.</p>
 
         <h2>Step-by-step: correct a Discord message locally</h2>
         <ol>
           <li>Open Discord and bring the draft or visible message into a clear, readable position.</li>
-          <li>Select the text normally when possible. If selection is awkward, choose Qelvora's rectangular capture path.</li>
+          <li>Press Qelvora's global shortcut to open the rectangular screen-area selector.</li>
           <li>Drag a tight rectangle around the words you want. Exclude avatars, timestamps, reactions, and neighboring messages when they are not part of the task.</li>
           <li>Choose correction, rewriting, or translation. Keep the instruction narrow so the model knows whether to preserve the original tone.</li>
           <li>Let local OCR read the area when a rectangle was used, then let the configured Ollama model process the recognized text.</li>
@@ -144,7 +144,7 @@
         <p>It also does not make OCR or model output automatically correct. Screen text can be misread, and a local model can change meaning. Human review remains part of the workflow. Qelvora should reduce the friction between seeing a sentence and improving it, not remove responsibility for what is eventually posted.</p>
 
         <h2>A practical Discord routine</h2>
-        <p>Keep the routine simple: use native spelling assistance for ordinary drafting, select text for a normal Qelvora correction when possible, and reach for the rectangle only when the surface gets in the way. Ask for one action at a time, review the result, and then return it to Discord. That sequence is faster and more reliable than treating every message as a full-document editing job.</p>
+        <p>Keep the routine simple: use native spelling assistance for ordinary drafting, use Qelvora's global shortcut whenever you want to frame an exact visible area, and use the separate Correct selection action for highlighted editable text. Ask for one action at a time, review the result, and then return it to Discord. That sequence is faster and more reliable than treating every message as a full-document editing job.</p>
 
         <h2>Bottom line</h2>
         <p>Qelvora can serve as a local Discord spell checker and translator on macOS without claiming Discord has no language tools. Normal selection handles editable text; rectangular OCR handles visible text when selection is limited or inconsistent. Both paths lead to a local Ollama model, with review before the result goes back into the conversation.</p>
