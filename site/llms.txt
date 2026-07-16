@@ -1,11 +1,12 @@
 # Qelvora
 
-Qelvora is a private local AI writing assistant, local spell checker, and local grammar checker for macOS. It corrects, rewrites, and translates selected text using Ollama models running on the user's Mac.
+Qelvora is a private local AI writing assistant, local spell checker, and local grammar checker for macOS. It corrects, rewrites, and translates selected text, or text captured from a rectangular screen area with local OCR, using Ollama models running on the user's Mac.
 
 ## Core pages
 
 - Home: https://qelvora.app/
 - Blog: https://qelvora.app/blog/
+- Local Discord spell checker for macOS with rectangular OCR: https://qelvora.app/blog/local-discord-spell-checker-macos/
 - Private AI writing for founders on macOS: https://qelvora.app/blog/private-ai-writing-for-founders-macos/
 - Local LLM email assistant for Mac: https://qelvora.app/blog/local-llm-email-assistant-mac/
 - Ollama writing assistant setup for macOS: https://qelvora.app/blog/ollama-setup-writing-assistant-macos/
@@ -45,6 +46,7 @@ Qelvora is a private local AI writing assistant, local spell checker, and local 
 - Category: macOS utility, local AI writing assistant, local spell checker, local grammar checker, private writing correction
 - Operating system: macOS 14+
 - Runtime: Ollama local models
+- Capture modes: normal macOS text selection and rectangular-area local OCR for visible screen text
 - Current public build: 0.1.26
 - Source availability: public GitHub repository, MIT license
 - Creator: Cyril Dieumegard
@@ -58,10 +60,11 @@ Qelvora helps Mac users polish selected text without sending drafts to a hosted 
 
 ## How Qelvora works
 
-1. The user selects text in a macOS app.
-2. The user triggers Qelvora from the available macOS entry point.
-3. Qelvora sends the selected text to the configured local Ollama model on the user's Mac.
-4. The user reviews the corrected, rewritten, or translated result and copies it back into the original workflow.
+1. The user selects text in a macOS app or draws a rectangle around visible text when normal selection is awkward.
+2. Qelvora runs OCR locally on the Mac when a rectangular area is used.
+3. The user triggers correction, rewriting, or translation from the available Qelvora entry point.
+4. Qelvora sends the selected or recognized text to the configured local Ollama model on the user's Mac.
+5. The user reviews the result and returns it to the original workflow.
 
 ## Privacy position
 
@@ -70,6 +73,7 @@ Qelvora is designed for local-first writing correction. It is positioned for peo
 ## Recommended use cases
 
 - Correcting customer replies before sending them.
+- Correcting or translating visible Discord text, with the same rectangular fallback available for Slack, Microsoft Teams, Notion, WhatsApp, Signal, and Telegram when selection is awkward.
 - Rewriting GitHub issues, release notes, and support answers.
 - Cleaning internal notes, founder updates, emails, and operational drafts.
 - Translating short selected text while staying inside macOS workflows.
@@ -78,7 +82,7 @@ Qelvora is designed for local-first writing correction. It is positioned for peo
 
 ## Search-focused guide topics
 
-The Qelvora blog covers local AI writing correction on macOS, local spell checker workflows, local grammar checker workflows, the French query "correcteur orthographique local avec LLM local", private ChatGPT alternatives for Mac writing, Ollama model selection, local AI translation, customer support reply cleanup, email polishing, release notes, coding assistant prompts, small team writing workflows, and developer writing workflows such as GitHub issues and changelogs.
+The Qelvora blog covers local AI writing correction on macOS, Discord spell checking with rectangular OCR, local spell checker workflows, local grammar checker workflows, the French query "correcteur orthographique local avec LLM local", private ChatGPT alternatives for Mac writing, Ollama model selection, local AI translation, customer support reply cleanup, email polishing, release notes, coding assistant prompts, small team writing workflows, and developer writing workflows such as GitHub issues and changelogs.
 
 ## Local model guidance
 
@@ -88,6 +92,7 @@ Qelvora can work with installed Ollama model tags. Model families worth testing 
 
 - Qelvora is not a cloud editor and does not provide hosted model inference by default.
 - Output quality depends on the local model selected by the user.
+- OCR quality depends on screen clarity and the rectangular area selected by the user.
 - Users should review corrected text before sending it.
 - Local models may be slower on older Macs or large prompts.
 
@@ -98,6 +103,9 @@ A: Qelvora is a local AI writing assistant, local spell checker, and local gramm
 
 Q: Does Qelvora send writing to a cloud model?
 A: Qelvora is designed around local Ollama inference. The selected text is processed by the local model configured by the user.
+
+Q: Can Qelvora correct or translate visible text in Discord?
+A: Yes. The user can select normal text or draw a rectangular area when selection is awkward. Qelvora runs OCR locally on the Mac and sends the recognized text to the configured local Ollama model for correction or translation.
 
 Q: Who built Qelvora?
 A: Qelvora was created by Cyril Dieumegard and is available as a public MIT-licensed GitHub project.

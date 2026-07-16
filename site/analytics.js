@@ -17,6 +17,7 @@
   function placementFor(link) {
     if (link.closest(".site-header")) return "nav";
     if (link.closest(".hero")) return "hero";
+    if (link.closest(".ocr-section")) return "discord_ocr";
     if (link.closest(".video-section")) return "demo";
     if (link.closest(".release-section")) return "release";
     if (link.closest(".article-cta")) return "article_cta";
@@ -73,6 +74,24 @@
         trackSimpleClick("blog_article_clicked", link);
       });
     });
+
+    document.querySelectorAll(".ocr-guide-link[href]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        trackSimpleClick("discord_ocr_guide_clicked", link);
+      });
+    });
+
+    var screenTextSection = document.querySelector("#screen-text");
+    if (screenTextSection && "IntersectionObserver" in window) {
+      var screenTextViewed = false;
+      var observer = new IntersectionObserver(function (entries) {
+        if (screenTextViewed || !entries.some(function (entry) { return entry.isIntersecting; })) return;
+        screenTextViewed = true;
+        goal("discord_ocr_section_viewed", { page_path: window.location.pathname });
+        observer.disconnect();
+      }, { threshold: 0.35 });
+      observer.observe(screenTextSection);
+    }
 
     document.querySelectorAll("video[data-analytics-video]").forEach(function (video) {
       var played = false;

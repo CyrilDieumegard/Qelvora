@@ -1,12 +1,27 @@
 import AppKit
 
 struct CapturedText: Equatable {
+    enum Source: Equatable {
+        case selectedText
+        case screenRegion
+    }
+
     let text: String
     let sourceProcessIdentifier: pid_t?
+    let source: Source
 
-    init(text: String, sourceProcessIdentifier: pid_t? = nil) {
+    init(
+        text: String,
+        sourceProcessIdentifier: pid_t? = nil,
+        source: Source = .selectedText
+    ) {
         self.text = text
         self.sourceProcessIdentifier = sourceProcessIdentifier
+        self.source = source
+    }
+
+    var shouldReplaceSelection: Bool {
+        source == .selectedText
     }
 }
 
@@ -17,6 +32,8 @@ enum TextCaptureError: LocalizedError, Equatable {
     case copyTimedOut
     case pasteFailed
     case screenCapturePermissionMissing
+    case regionSelectionCancelled
+    case noTextInRegion
 
     var errorDescription: String? {
         switch self {
@@ -31,13 +48,18 @@ enum TextCaptureError: LocalizedError, Equatable {
         case .pasteFailed:
             return "Unable to paste the corrected text."
         case .screenCapturePermissionMissing:
-            return "Qelvora needs Screen Recording permission to read selected text in apps like Discord."
+            return "Qelvora needs Screen Recording permission to read a screen area in apps like Discord."
+        case .regionSelectionCancelled:
+            return "Screen area selection canceled."
+        case .noTextInRegion:
+            return "No readable text found in that screen area."
         }
     }
 }
 
 protocol TextCaptureServiceProtocol {
     func captureSelectedText() async throws -> CapturedText
+    func captureTextFromScreenRegion() async throws -> CapturedText
     func replaceSelection(with text: String) async throws
 }
 
@@ -47,12 +69,14 @@ final class TextCaptureService: TextCaptureServiceProtocol {
         case selection
         case mouseContextSelection
         case screenOCRSelection
+        case screenRegion
         case focusedTextValue
     }
 
     private let keyboardSimulator: KeyboardSimulator
     private var selectedTextReader: SelectedTextReader
     private let screenTextReader: ScreenTextReader
+    private let screenRegionSelector: ScreenRegionSelector
     private let pasteboard: NSPasteboard
     private let targetApplicationProvider: @MainActor () -> NSRunningApplication?
     private let copyTimeoutNanoseconds: UInt64 = 700_000_000
@@ -67,6 +91,7 @@ final class TextCaptureService: TextCaptureServiceProtocol {
         keyboardSimulator: KeyboardSimulator = KeyboardSimulator(),
         selectedTextReader: SelectedTextReader = SelectedTextReader(),
         screenTextReader: ScreenTextReader = ScreenTextReader(),
+        screenRegionSelector: ScreenRegionSelector? = nil,
         pasteboard: NSPasteboard = .general,
         targetApplicationProvider: @escaping @MainActor () -> NSRunningApplication? = {
             NSWorkspace.shared.frontmostApplication
@@ -75,6 +100,7 @@ final class TextCaptureService: TextCaptureServiceProtocol {
         self.keyboardSimulator = keyboardSimulator
         self.selectedTextReader = selectedTextReader
         self.screenTextReader = screenTextReader
+        self.screenRegionSelector = screenRegionSelector ?? ScreenRegionSelector()
         self.pasteboard = pasteboard
         self.targetApplicationProvider = targetApplicationProvider
     }
@@ -88,40 +114,9 @@ final class TextCaptureService: TextCaptureServiceProtocol {
         try? await Task.sleep(nanoseconds: hotkeyReleaseDelayNanoseconds)
 
         let prefersScreenOCR = shouldPreferScreenOCR(for: targetApplication)
-        var screenCapturePermissionWasMissing = false
 
-        if !prefersScreenOCR {
-            if let selectedText = nonEmptyText(
-                selectedTextReader.selectedText(processIdentifier: activeTargetProcessIdentifier)
-            ) {
-                replacementMode = .selection
-                return CapturedText(
-                    text: selectedText,
-                    sourceProcessIdentifier: activeTargetProcessIdentifier
-                )
-            }
-
-            if let copiedText = try? await copiedSelectedTextViaKeyboard(from: targetApplication) {
-                replacementMode = .selection
-                return CapturedText(
-                    text: copiedText,
-                    sourceProcessIdentifier: activeTargetProcessIdentifier
-                )
-            }
-        }
-
-        do {
-            if let screenSelectedText = try await screenTextReader.selectedTextNearPointer(
-                processIdentifier: activeTargetProcessIdentifier
-            ) {
-                replacementMode = .screenOCRSelection
-                return CapturedText(
-                    text: screenSelectedText,
-                    sourceProcessIdentifier: activeTargetProcessIdentifier
-                )
-            }
-        } catch ScreenTextReaderError.screenCapturePermissionMissing {
-            screenCapturePermissionWasMissing = true
+        if prefersScreenOCR {
+            return try await captureTextFromScreenRegion(targetApplication: targetApplication)
         }
 
         if let selectedText = nonEmptyText(
@@ -152,16 +147,55 @@ final class TextCaptureService: TextCaptureServiceProtocol {
             )
         }
 
-        if screenCapturePermissionWasMissing {
+        return try await captureTextFromScreenRegion(targetApplication: targetApplication)
+    }
+
+    func captureTextFromScreenRegion() async throws -> CapturedText {
+        try await captureTextFromScreenRegion(targetApplication: targetApplicationForCapture())
+    }
+
+    private func captureTextFromScreenRegion(
+        targetApplication: NSRunningApplication?
+    ) async throws -> CapturedText {
+        guard ScreenCapturePermission.canCaptureScreen else {
+            ScreenCapturePermission.requestAndOpenSettings()
             throw TextCaptureError.screenCapturePermissionMissing
         }
 
-        throw TextCaptureError.selectionNotDetected(
-            "No selected text detected in \(targetApplicationName(targetApplication))"
+        activeTargetProcessIdentifier = targetApplication?.processIdentifier
+        replacementMode = .screenRegion
+        mouseContextLocation = nil
+
+        guard let selection = await screenRegionSelector.selectRegion() else {
+            throw TextCaptureError.regionSelectionCancelled
+        }
+
+        try? await Task.sleep(nanoseconds: 120_000_000)
+
+        let recognizedText: String?
+        do {
+            recognizedText = try await screenTextReader.text(in: selection)
+        } catch ScreenTextReaderError.screenCapturePermissionMissing {
+            throw TextCaptureError.screenCapturePermissionMissing
+        }
+
+        guard let recognizedText,
+              let text = nonEmptyText(recognizedText) else {
+            throw TextCaptureError.noTextInRegion
+        }
+
+        return CapturedText(
+            text: text,
+            sourceProcessIdentifier: activeTargetProcessIdentifier,
+            source: .screenRegion
         )
     }
 
     func replaceSelection(with text: String) async throws {
+        guard replacementMode != .screenRegion else {
+            throw TextCaptureError.pasteFailed
+        }
+
         let targetApplication = application(with: activeTargetProcessIdentifier) ?? targetApplicationProvider()
         await activateTargetApplicationForKeyboard(targetApplication)
         let targetProcessIdentifier = targetApplication?.processIdentifier ?? activeTargetProcessIdentifier

@@ -40,7 +40,7 @@
 	<key>NSInputMonitoringUsageDescription</key>
 	<string>Qelvora uses the keyboard shortcut to copy selected text and paste the correction.</string>
 	<key>NSScreenCaptureUsageDescription</key>
-	<string>Qelvora uses local screen capture to read selected text in apps that do not expose it, such as Discord.</string>
+	<string>Qelvora uses local screen capture to read only the area you select in apps that do not expose text reliably, such as Discord.</string>
 	<key>NSServices</key>
 	<array>
 		<dict>

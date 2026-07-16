@@ -40,27 +40,41 @@ struct MenuBarView: View {
     }
 
     private var actions: some View {
-        HStack(spacing: 8) {
-            Button {
-                Task {
-                    await appState.coordinator.correctSelection()
+        VStack(spacing: 8) {
+            HStack(spacing: 8) {
+                Button {
+                    Task {
+                        await appState.coordinator.correctSelection()
+                    }
+                } label: {
+                    Label("Correct", systemImage: "wand.and.stars")
+                        .frame(maxWidth: .infinity)
                 }
-            } label: {
-                Label("Correct", systemImage: "wand.and.stars")
-                    .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(appState.coordinator.isProcessing)
+
+                Button {
+                    appState.coordinator.showComposer()
+                } label: {
+                    Label("Write", systemImage: "square.and.pencil")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-            .disabled(appState.coordinator.isProcessing)
 
             Button {
-                appState.coordinator.showComposer()
+                Task {
+                    await appState.coordinator.correctScreenRegion()
+                }
             } label: {
-                Label("Write", systemImage: "square.and.pencil")
+                Label("Select screen area", systemImage: "viewfinder")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
             .controlSize(.large)
+            .disabled(appState.coordinator.isProcessing)
         }
     }
 

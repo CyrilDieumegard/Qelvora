@@ -28,6 +28,20 @@ final class CorrectionCoordinator: ObservableObject {
     }
 
     func correctSelection() async {
+        await correctCapturedText {
+            try await textCapture.captureSelectedText()
+        }
+    }
+
+    func correctScreenRegion() async {
+        await correctCapturedText {
+            try await textCapture.captureTextFromScreenRegion()
+        }
+    }
+
+    private func correctCapturedText(
+        capture: () async throws -> CapturedText
+    ) async {
         guard !isProcessing else {
             return
         }
@@ -43,7 +57,7 @@ final class CorrectionCoordinator: ObservableObject {
             try? await Task.sleep(nanoseconds: 120_000_000)
 
             status = .capturing
-            let capturedText = try await textCapture.captureSelectedText()
+            let capturedText = try await capture()
 
             status = .correcting
             try validateLocalModelIsReady()
@@ -57,10 +71,23 @@ final class CorrectionCoordinator: ObservableObject {
             rememberCorrection(sourceText: capturedText.text, correctedText: correctedText, mode: selectedMode)
             keepCorrectionPanelOnError = true
 
-            status = .pasting
-            try await textCapture.replaceSelection(with: correctedText)
-
-            markCompleted(feedback: "Text corrected")
+            if capturedText.shouldReplaceSelection {
+                status = .pasting
+                try await textCapture.replaceSelection(with: correctedText)
+                markCompleted(feedback: "Text corrected")
+            } else {
+                markCompleted(feedback: "Correction ready to copy")
+            }
+        } catch TextCaptureError.regionSelectionCancelled {
+            status = .idle
+            FeedbackBanner.show("Area selection canceled")
+        } catch TextCaptureError.noTextInRegion {
+            if !keepCorrectionPanelOnError {
+                CorrectionResultPanel.hide()
+            }
+            status = .noSelection
+            FeedbackBanner.show("No readable text found in that area")
+            NSSound.beep()
         } catch TextCaptureError.noSelection {
             if !keepCorrectionPanelOnError {
                 showComposer()

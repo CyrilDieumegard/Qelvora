@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Discord spell checker for macOS with OCR - Qelvora</title>
+    <meta name="description" content="Use Qelvora as a local Discord spell checker and translator on macOS. Select text or draw a rectangle, run local OCR, and use Ollama privately.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Qelvora">
+    <meta property="og:title" content="Local Discord spell checker for macOS with rectangular OCR">
+    <meta property="og:description" content="Correct or translate visible Discord text on your Mac with rectangular-area OCR and a local Ollama model.">
+    <meta property="og:url" content="https://qelvora.app/blog/local-discord-spell-checker-macos/">
+    <meta property="og:image" content="https://qelvora.app/assets/qelvora-product-overview.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Local Discord spell checker for macOS with OCR">
+    <meta name="twitter:description" content="Select text or draw a rectangle around Discord copy, then correct or translate it locally with Qelvora and Ollama.">
+    <meta name="twitter:image" content="https://qelvora.app/assets/qelvora-product-overview.svg">
+    <link rel="canonical" href="https://qelvora.app/blog/local-discord-spell-checker-macos/">
+    <link rel="icon" href="/assets/qelvora-logo.png">
+    <link rel="stylesheet" href="/styles.css">
+    <script defer data-website-id="dfid_W7eRzb8fvbMBhDLkI1X2d" data-domain="qelvora.app" src="https://datafa.st/js/script.js"></script>
+    <script defer src="/analytics.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": "https://qelvora.app/blog/local-discord-spell-checker-macos/#article",
+        "headline": "Local Discord spell checker for macOS with rectangular OCR",
+        "description": "Use Qelvora as a local Discord spell checker and translator on macOS by selecting text or drawing a rectangular OCR area, then processing the result with a local Ollama model.",
+        "image": "https://qelvora.app/assets/qelvora-product-overview.svg",
+        "datePublished": "2026-07-16",
+        "dateModified": "2026-07-16",
+        "author": {
+          "@type": "Person",
+          "name": "Cyril Dieumegard",
+          "url": "https://github.com/CyrilDieumegard"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Qelvora",
+          "url": "https://qelvora.app/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://qelvora.app/assets/qelvora-logo.png"
+          }
+        },
+        "keywords": [
+          "local Discord spell checker",
+          "Discord OCR macOS",
+          "local Discord translator",
+          "rectangular OCR",
+          "Ollama writing assistant"
+        ],
+        "about": [
+          "Local spell checking",
+          "Rectangular-area OCR",
+          "Private translation on macOS"
+        ],
+        "mentions": [
+          "Qelvora",
+          "Discord",
+          "Slack",
+          "Microsoft Teams",
+          "Notion",
+          "WhatsApp",
+          "Signal",
+          "Telegram",
+          "Ollama",
+          "macOS"
+        ],
+        "isPartOf": {
+          "@type": "Blog",
+          "name": "Qelvora Blog",
+          "url": "https://qelvora.app/blog/"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://qelvora.app/blog/local-discord-spell-checker-macos/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" aria-label="Site navigation">
+      <a class="brand" href="/" aria-label="Qelvora home"><img src="/assets/qelvora-logo.png" width="36" height="36" alt=""><span>Qelvora</span></a>
+      <nav class="nav-links" aria-label="Primary"><a href="/">Home</a><a href="/#screen-text">Discord OCR</a><a href="/blog/">Blog</a><a href="/#download">Download</a></nav>
+      <a class="nav-cta" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.26.dmg" rel="noopener noreferrer">Download</a>
+    </header>
+
+    <main id="main" class="article-page">
+      <article class="article-body">
+        <p class="kicker">Discord and local OCR</p>
+        <h1>Local Discord spell checking on macOS with rectangular OCR</h1>
+        <p class="article-lead">Qelvora gives Mac users two ways to work with Discord text: select normal text when the surface allows it, or draw a rectangle around visible words and let local OCR read the area. The recognized text can then be corrected, rewritten, or translated by an Ollama model running on the same Mac.</p>
+
+        <h2>Why Discord text can need a different correction workflow</h2>
+        <p>Discord is a communication app, not a long-form document editor. A draft in the message composer, an older message in channel history, a code block, and text inside an embedded panel are different surfaces. Selecting exactly one sentence can be easy in one place and awkward in another. Translation options can also depend on the operating system, app version, language, and the specific part of the interface you are using.</p>
+        <p>That does not mean Discord has no spelling assistance. Native and system-level spell-check behavior may already help in some contexts, and it can change over time. The practical gap appears when the built-in route does not cover the exact text in front of you, when you want more than typo detection, or when you need a quick translation without moving the whole conversation into a separate cloud editor.</p>
+
+        <h2>Qelvora offers selection first and rectangular OCR second</h2>
+        <p>The fastest path is still normal text selection. Highlight a draft, trigger Qelvora from the available macOS entry point, and ask your configured local model to correct spelling, improve grammar, preserve tone, rewrite, or translate. This is the right choice when the text is editable and macOS can expose the selection reliably.</p>
+        <p>The rectangular-area path is the fallback for visible text that is difficult to select cleanly. Draw a box around the sentence or message you need. Qelvora reads only that screen region with OCR on the Mac, converts the image of the words into text, and hands the recognized text to your local Ollama model. You can then review the result before placing it back into your workflow.</p>
+        <p>This matters because the rectangle follows what you can see, not whether a particular app exposes a conventional text-selection API. See the <a href="/#screen-text">Discord-first rectangular OCR overview</a> on the Qelvora homepage for a visual example.</p>
+
+        <h2>Step-by-step: correct a Discord message locally</h2>
+        <ol>
+          <li>Open Discord and bring the draft or visible message into a clear, readable position.</li>
+          <li>Select the text normally when possible. If selection is awkward, choose Qelvora's rectangular capture path.</li>
+          <li>Drag a tight rectangle around the words you want. Exclude avatars, timestamps, reactions, and neighboring messages when they are not part of the task.</li>
+          <li>Choose correction, rewriting, or translation. Keep the instruction narrow so the model knows whether to preserve the original tone.</li>
+          <li>Let local OCR read the area when a rectangle was used, then let the configured Ollama model process the recognized text.</li>
+          <li>Review names, numbers, links, dates, product terms, and meaning before you copy or return the result.</li>
+        </ol>
+        <p>For the standard selected-text route outside Discord, read <a href="/blog/macos-text-correction-workflow-any-app/">text correction in any macOS app with local AI</a>. The two workflows share the same goal; only the capture method changes.</p>
+
+        <h2>Correction and translation are different tasks</h2>
+        <p>A useful local spell checker should not turn every Discord message into formal corporate prose. For correction, ask the model to fix spelling and grammar while preserving voice, formatting, @mentions, channel names, URLs, and code. For rewriting, state the desired tone and audience. For translation, specify the target language and whether product names or technical terms should remain unchanged.</p>
+        <p>Imagine a visible French message that asks a teammate to send a corrected version to the product channel before 14:00. A rectangular capture can isolate that sentence, local OCR can recognize it, and the Ollama model can return an English translation. You still review the time, channel reference, and intent before using it. That final check is important because OCR and language models solve different parts of the problem, and either stage can misread unusual names or compact interface text.</p>
+        <p>For a deeper translation workflow, use the guide to <a href="/blog/local-ai-translation-macos/">local AI translation on macOS</a>. The <a href="/blog/local-ai-translation-privacy-guide/">local AI translation privacy guide</a> covers the decisions to make before processing sensitive text.</p>
+
+        <h2>Discord first, with the same fallback in other apps</h2>
+        <p>Discord is the clearest example because people frequently move between a composer, message history, code snippets, and fast-moving channels. The same rectangular capture can be useful when visible text is inconvenient to select in other work and messaging surfaces:</p>
+        <ul>
+          <li><strong>Slack:</strong> isolate a sentence in a thread, channel, canvas preview, or compact message view when normal selection is not convenient.</li>
+          <li><strong>Microsoft Teams:</strong> capture the relevant line from a chat or meeting-related surface without claiming that Teams lacks its own writing tools.</li>
+          <li><strong>Notion:</strong> use normal block selection first, then use a rectangle for visible text in a surface that does not expose the selection you need.</li>
+          <li><strong>WhatsApp, Signal, and Telegram:</strong> correct or translate a visible message when the app's current selection or language actions do not fit the task.</li>
+        </ul>
+        <p>Qelvora is independent of these services. It is not a plugin supplied or endorsed by Discord, Slack, Microsoft, Notion, WhatsApp, Signal, or Telegram. The rectangle is a macOS screen-text workflow, so it complements native app features instead of pretending every app behaves the same way.</p>
+
+        <h2>What stays local in the OCR workflow</h2>
+        <p>Qelvora is designed around local processing. The rectangular screen area is read with OCR on the Mac, and the recognized text is sent to the Ollama model configured on that Mac. The product does not require a hosted correction editor for this route. That is useful for internal notes, support discussions, product planning, and other drafts that you do not want to paste into an unrelated online writing service.</p>
+        <p>Local does not remove the need for judgment. You control which screen area is captured, which model is installed, and which text is submitted to that model. Only grant the macOS permissions needed for capture and replacement, keep Ollama and the chosen model under your control, and avoid capturing unrelated messages around the sentence you need. For broader setup guidance, read <a href="/blog/ollama-setup-writing-assistant-macos/">Ollama writing assistant setup for macOS</a>.</p>
+
+        <h2>How to get better rectangular OCR results</h2>
+        <p>OCR quality starts with the rectangle. Make it tight enough to exclude timestamps, user names, reactions, and sidebars, but leave a small margin so letters at the edge are not clipped. Increase the app's zoom when text is small. Prefer a stable, high-contrast view, and wait for scrolling or animations to stop before capturing.</p>
+        <p>Work with one message or short paragraph at a time. A narrow task is easier to verify and keeps the model focused. After recognition, compare the source and result for punctuation, capitalization, accented characters, emoji, links, code, dates, and numbers. If the OCR output is wrong, recapture a smaller or clearer area instead of asking the language model to guess what the screen probably said.</p>
+        <p>Model choice matters after OCR. A small model can be fast for short English corrections, while multilingual translation may benefit from a model with stronger coverage of both languages. Test a few representative messages and measure whether the model preserves names and intent. The guide to a <a href="/blog/local-spell-checker-llm-mac/">local spell checker with local LLMs for Mac</a> explains how to keep that review disciplined.</p>
+
+        <h2>What Qelvora does not replace</h2>
+        <p>Use Discord's or macOS's built-in spelling and language features when they already solve the problem. They are often the quickest option for ordinary typing. Qelvora becomes useful when you want a consistent local correction prompt, a rewrite that understands context, translation through your own local model, or OCR for visible text that is awkward to select.</p>
+        <p>It also does not make OCR or model output automatically correct. Screen text can be misread, and a local model can change meaning. Human review remains part of the workflow. Qelvora should reduce the friction between seeing a sentence and improving it, not remove responsibility for what is eventually posted.</p>
+
+        <h2>A practical Discord routine</h2>
+        <p>Keep the routine simple: use native spelling assistance for ordinary drafting, select text for a normal Qelvora correction when possible, and reach for the rectangle only when the surface gets in the way. Ask for one action at a time, review the result, and then return it to Discord. That sequence is faster and more reliable than treating every message as a full-document editing job.</p>
+
+        <h2>Bottom line</h2>
+        <p>Qelvora can serve as a local Discord spell checker and translator on macOS without claiming Discord has no language tools. Normal selection handles editable text; rectangular OCR handles visible text when selection is limited or inconsistent. Both paths lead to a local Ollama model, with review before the result goes back into the conversation.</p>
+
+        <aside class="article-cta" aria-label="Download Qelvora">
+          <div>
+            <strong>Correct or translate Discord text locally.</strong>
+            <p>Download Qelvora, connect your local Ollama model, and use selection or rectangular OCR from your Mac workflow.</p>
+          </div>
+          <a class="button button-primary" href="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.26.dmg" rel="noopener noreferrer">Download Qelvora</a>
+        </aside>
+        <aside class="article-related" aria-label="Related guides">
+          <strong>Related guides</strong>
+          <nav aria-label="Related Qelvora guides">
+            <a href="/blog/macos-text-correction-workflow-any-app/">Any-app correction</a>
+            <a href="/blog/local-ai-translation-macos/">Local translation</a>
+            <a href="/blog/local-spell-checker-llm-mac/">Local spell checking</a>
+          </nav>
+        </aside>
+      </article>
+    </main>
+    <footer class="site-footer"><div class="footer-links"><a href="/blog/">All guides</a><a href="/llms.txt">LLMs.txt</a><a href="https://github.com/CyrilDieumegard/Qelvora" rel="noopener noreferrer">GitHub</a></div></footer>
+  </body>
+</html>

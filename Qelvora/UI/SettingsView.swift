@@ -199,27 +199,41 @@ struct SettingsView: View {
 
     private var actionsCard: some View {
         SettingsCard(title: "Actions", systemImage: "bolt.fill") {
-            HStack(spacing: 10) {
-                Button {
-                    Task {
-                        await appState.coordinator.correctSelection()
+            VStack(spacing: 10) {
+                HStack(spacing: 10) {
+                    Button {
+                        Task {
+                            await appState.coordinator.correctSelection()
+                        }
+                    } label: {
+                        Label("Correct", systemImage: "wand.and.stars")
+                            .frame(maxWidth: .infinity)
                     }
-                } label: {
-                    Label("Correct", systemImage: "wand.and.stars")
-                        .frame(maxWidth: .infinity)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .disabled(appState.coordinator.isProcessing)
+
+                    Button {
+                        appState.coordinator.showComposer()
+                    } label: {
+                        Label("Write", systemImage: "square.and.pencil")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
                 }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .disabled(appState.coordinator.isProcessing)
 
                 Button {
-                    appState.coordinator.showComposer()
+                    Task {
+                        await appState.coordinator.correctScreenRegion()
+                    }
                 } label: {
-                    Label("Write", systemImage: "square.and.pencil")
+                    Label("Select screen area", systemImage: "viewfinder")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.large)
+                .disabled(appState.coordinator.isProcessing)
             }
         }
     }
@@ -300,11 +314,11 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 10) {
                 diagnosticRow(
                     title: "Mode",
-                    value: "Hybrid auto",
+                    value: "Text + area OCR",
                     isHealthy: true
                 )
 
-                Text("Qelvora first tries native methods when they are reliable, then falls back to OCR near the pointer for apps that block selection access.")
+                Text("Correct a normal text selection, or drag a rectangle around visible text when an app such as Discord does not expose it reliably.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -316,21 +330,21 @@ struct SettingsView: View {
         SettingsCard(title: "OCR reliability", systemImage: "scope") {
             VStack(alignment: .leading, spacing: 10) {
                 SettingsInfoBlock(
-                    systemImage: "cursorarrow.motionlines",
-                    title: "Pointer priority",
-                    description: "Selection near the pointer is prioritized to avoid reading an unrelated blue link nearby."
+                    systemImage: "viewfinder",
+                    title: "Rectangle selection",
+                    description: "Choose exactly which visible text Qelvora should read instead of relying on an inferred OCR zone."
                 )
 
                 SettingsInfoBlock(
-                    systemImage: "rectangle.dashed",
-                    title: "Selected zone",
-                    description: "If detected text looks wrong, the result panel's OCR diagnostic shows what was actually read."
+                    systemImage: "lock.shield",
+                    title: "Local OCR",
+                    description: "The selected screen area is read on this Mac before your local Ollama model processes the text."
                 )
 
                 SettingsInfoBlock(
-                    systemImage: "keyboard.badge.eye",
-                    title: "Transparent fallback",
-                    description: "When macOS blocks automatic replacement, Qelvora shows a copyable correction instead of hiding the failure."
+                    systemImage: "doc.on.doc",
+                    title: "Copy-safe result",
+                    description: "Area capture returns a copyable correction and never pastes into an uncertain cursor position."
                 )
             }
         }

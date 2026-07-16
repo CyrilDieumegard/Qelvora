@@ -1,5 +1,6 @@
 import AppKit
 import CoreGraphics
+import ScreenCaptureKit
 import Vision
 
 enum ScreenTextReaderError: Error, Equatable {
@@ -9,6 +10,53 @@ enum ScreenTextReaderError: Error, Equatable {
 struct ScreenTextReader {
     private let detector = SelectionHighlightDetector()
     private let recognizer = SelectionTextRecognizer()
+
+    @MainActor
+    func text(in selection: ScreenRegionSelection) async throws -> String? {
+        guard ScreenCapturePermission.canCaptureScreen else {
+            ScreenCapturePermission.requestAndOpenSettings()
+            throw ScreenTextReaderError.screenCapturePermissionMissing
+        }
+
+        let shareableContent = try await SCShareableContent.current
+        guard let display = shareableContent.displays.first(where: { $0.displayID == selection.displayID }) else {
+            return nil
+        }
+
+        let excludedApplications = shareableContent.applications.filter {
+            $0.processID == NSRunningApplication.current.processIdentifier
+        }
+        let contentFilter = SCContentFilter(
+            display: display,
+            excludingApplications: excludedApplications,
+            exceptingWindows: []
+        )
+        let configuration = SCStreamConfiguration()
+        configuration.width = Int(CGDisplayPixelsWide(selection.displayID))
+        configuration.height = Int(CGDisplayPixelsHigh(selection.displayID))
+        configuration.showsCursor = false
+
+        let image = try await SCScreenshotManager.captureImage(
+            contentFilter: contentFilter,
+            configuration: configuration
+        )
+
+        let cropRect = selection.imageCropRect(
+            imageSize: CGSize(width: image.width, height: image.height)
+        )
+
+        guard !cropRect.isNull,
+              cropRect.width >= 4,
+              cropRect.height >= 4,
+              let croppedImage = image.cropping(to: cropRect) else {
+            return nil
+        }
+
+        let recognizedText = await recognizer.recognizeVisibleText(in: croppedImage)
+        return recognizedText
+            .map(cleanedSelectionOCRText)
+            .flatMap { $0.nilIfEmpty }
+    }
 
     @MainActor
     func selectedTextNearPointer(processIdentifier: pid_t?) async throws -> String? {
@@ -910,6 +958,28 @@ private struct SelectionTextRecognizer {
             recognizeTextSynchronously(inSelectedCrop: image)?.text
         }.value
     }
+
+    func recognizeVisibleText(in image: CGImage) async -> String? {
+        await Task.detached(priority: .userInitiated) {
+            let candidates = [
+                recognizedTextSynchronously(
+                    in: image,
+                    recognitionLevel: .accurate,
+                    usesLanguageCorrection: true
+                ),
+                scaledImage(from: image, scale: 1.5).flatMap { scaledImage in
+                    recognizedTextSynchronously(
+                        in: scaledImage,
+                        recognitionLevel: .accurate,
+                        usesLanguageCorrection: true
+                    )
+                }
+            ]
+            .compactMap { $0 }
+
+            return bestText(in: candidates)?.text
+        }.value
+    }
 }
 
 private struct RecognizedLineText {
@@ -1013,7 +1083,8 @@ private func recognizedTextSynchronously(
     let request = VNRecognizeTextRequest()
     request.recognitionLevel = recognitionLevel
     request.usesLanguageCorrection = usesLanguageCorrection
-    request.recognitionLanguages = ["fr-FR", "en-US"]
+    request.automaticallyDetectsLanguage = true
+    request.recognitionLanguages = ["fr-FR", "en-US", "de-DE", "es-ES", "it-IT"]
 
     let handler = VNImageRequestHandler(cgImage: image, options: [:])
 
