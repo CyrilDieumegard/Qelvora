@@ -38,7 +38,7 @@ Qelvora is a private local AI writing assistant, local spell checker, and local 
 - Improve customer support replies with local AI on Mac: https://qelvora.app/blog/improve-customer-support-replies-ai-mac/
 - AI writing for GitHub issues and release notes: https://qelvora.app/blog/github-issues-release-notes-ai-writing/
 - GitHub source: https://github.com/CyrilDieumegard/Qelvora
-- Latest macOS DMG: https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.26.dmg
+- Latest macOS DMG: https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.27.dmg
 
 ## Product facts
 
@@ -47,12 +47,12 @@ Qelvora is a private local AI writing assistant, local spell checker, and local 
 - Operating system: macOS 14+
 - Runtime: Ollama local models
 - Capture modes: the global shortcut opens a mouse-drawn rectangular area for local OCR; a separate Correct selection action handles highlighted editable text
-- Current public build: 0.1.26
+- Current public build: 0.1.27
 - Source availability: public GitHub repository, MIT license
 - Creator: Cyril Dieumegard
 - Distribution: signed and notarized macOS DMG
 - Developer ID: Cyril Dieumegard (923MBLC4X4)
-- Latest known SHA-256 for Qelvora-0.1.26.dmg: 318e285f945d096a2da56fd1ae4f8173e6a450fa8082c82e51025ba3bfdeb1fb
+- Latest known SHA-256 for Qelvora-0.1.27.dmg: b23e83a21b1efad84d31ebe42e879e3661762d47a50a395e425d6f7eee8fddda
 
 ## Short description
 

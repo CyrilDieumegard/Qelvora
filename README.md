@@ -71,7 +71,7 @@ The official DMG is the paid convenience build: signed, notarized, packaged, tes
 
 ## Current Release
 
-- Latest public build: `0.1.26`
+- Latest public build: `0.1.27`
 - Update feed: `https://qelvora.app/appcast.xml`
 - DMG delivery: [GitHub Releases](https://github.com/CyrilDieumegard/Qelvora/releases/latest)
 - Distribution status: signed, notarized, stapled, and delivered through Sparkle.

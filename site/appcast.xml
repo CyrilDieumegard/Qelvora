@@ -3,16 +3,17 @@
     <channel>
         <title>Qelvora</title>
         <item>
-            <title>0.1.26</title>
-            <pubDate>Wed, 01 Jul 2026 15:28:16 +0200</pubDate>
+            <title>0.1.27</title>
+            <pubDate>Thu, 16 Jul 2026 16:51:19 +0200</pubDate>
             <link>https://qelvora.app</link>
-            <sparkle:version>27</sparkle:version>
-            <sparkle:shortVersionString>0.1.26</sparkle:shortVersionString>
+            <sparkle:version>28</sparkle:version>
+            <sparkle:shortVersionString>0.1.27</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.26.dmg" length="5119964" type="application/octet-stream" sparkle:edSignature="O3UlRQWJ2UrsGVHt6BBCQ+P1JRVMm1CdGMrVVM6WkySTbPWQWcChLnefBD0v8frrJY7ktYKzqPI4stMwMhNbAQ=="/>
+            <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora-0.1.27.dmg" length="5085448" type="application/octet-stream" sparkle:edSignature="k7r7sgcp+pZeMpbDd/rP/nywprqFKBMRH17I0et/G5UlTACa6FFsbEAQ65YVLPxnBFfS6gECuhqbMzCuZoYqAQ=="/>
             <sparkle:deltas>
-                <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora27-26.delta" sparkle:deltaFrom="26" length="298194" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="QPi4PtTw3U0VuhTVg9BbAw7rMehRaj+7pExIF8XreVsObRy/j5qfNje+Ig7tNSI6C/324cwhBfYQ+YZiJtsoDQ=="/>
-                <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora27-25.delta" sparkle:deltaFrom="25" length="387198" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="kbfgvUUg2PgXw8/cDEFIcFei//m5/6k/d508M2rmamZrvfoCPzBZBmBW7ret+TjDxZ0rQXOTdZW8IkX/KYd4Bg=="/>
+                <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora28-27.delta" sparkle:deltaFrom="27" length="370934" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="uZT/DJtxfLqqwHbFz1BzlO5zeGIYBtMWPyCkiy0CF+FI3xj0KU/zShmhMKe5KPBS+p3t3WaNPHKfS1A4BJGsCQ=="/>
+                <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora28-26.delta" sparkle:deltaFrom="26" length="421682" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="GvZE1pQqAnIv8/xbxVSt1m8kHdANlmgdH+X/2tX9G9iZwWizVZr6ekYr9KCssJHge9BFlI6WOKddVeT+bGViCg=="/>
+                <enclosure url="https://github.com/CyrilDieumegard/Qelvora/releases/latest/download/Qelvora28-25.delta" sparkle:deltaFrom="25" length="486074" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="tDEiTz269qACyYcdTUwRBDWo/bQktzCsQWP0jFNOWMmWxfp6U9KcpY2SG8SCguP8RgSESzzL2Fz5MFLC0auxDg=="/>
             </sparkle:deltas>
         </item>
     </channel>
