@@ -81,6 +81,13 @@
       });
     });
 
+    document.querySelectorAll(".product-hunt-badge[href]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        trackSimpleClick("product_hunt_clicked", link);
+      });
+      link.setAttribute("data-analytics-goal", "product_hunt_clicked");
+    });
+
     var screenTextSection = document.querySelector("#screen-text");
     if (screenTextSection && "IntersectionObserver" in window) {
       var screenTextViewed = false;

@@ -297,6 +297,19 @@ main > section[id] {
   margin-top: 1.75rem;
 }
 
+.product-hunt-badge {
+  display: inline-flex;
+  width: 250px;
+  height: 54px;
+  margin-top: 1rem;
+  vertical-align: top;
+}
+
+.product-hunt-badge img {
+  width: 250px;
+  height: 54px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -329,8 +342,17 @@ main > section[id] {
     transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
   }
 
-  .button:hover {
+  .product-hunt-badge {
+    transition: transform 160ms ease, filter 160ms ease;
+  }
+
+  .button:hover,
+  .product-hunt-badge:hover {
     transform: translateY(-1px);
+  }
+
+  .product-hunt-badge:hover {
+    filter: drop-shadow(0 10px 16px rgba(31, 52, 73, 0.13));
   }
 }
 
